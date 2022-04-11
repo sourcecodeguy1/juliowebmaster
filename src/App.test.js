@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders learn react link', (textMatch) => {
   render(<App />);
-  const linkElement = screen.getByText("HELLO I'M JULIO. Full-stack Developer Home Resume Profile Details Matthew is a pianist living in Nashville.", { textContent: true });
-  expect(linkElement).toBeInTheDocument();
+  //const linkElement = screen.getByText(/learn react/i);
+  const hasText = (node: Element) => node.textContent === textMatch || node.textContent.match(textMatch);
+  expect(hasText).toBeInTheDocument();
 });
