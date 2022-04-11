@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Card, List, Divider, Pagination, Menu } from "semantic-ui-react";
+import {Card, List, Divider, Pagination } from "semantic-ui-react";
 import SemanticNavbar from "../NavbarComponent/SemanticNavbar";
 
 import {StyledCardResume} from '../CardComponent/SemanticCard.styled'
