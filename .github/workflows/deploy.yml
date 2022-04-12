@@ -42,8 +42,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script_stop: true
           #envs: GITHUB_USERNAME, GITHUB_TOKEN
-          #script: |
-           # docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-            #docker pull juliowebmaster:prod
-            #docker run -dit -p 80:80 juliowebmaster:prod
-            #docker logout
+          script: |
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+            docker pull juliowebmaster:prod
+            docker run -dit -p 80:80 juliowebmaster:prod
+            docker logout
