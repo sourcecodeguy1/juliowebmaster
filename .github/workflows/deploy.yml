@@ -30,6 +30,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           dockerfile: Dockerfile-prod
           tags: latest
+          script_stop: true
       - name: Deploy package to docker Server
         uses: appleboy/ssh-action@master
         #env:
@@ -37,8 +38,8 @@ jobs:
           #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
           script_stop: true
           #envs: GITHUB_USERNAME, GITHUB_TOKEN
           script: |
