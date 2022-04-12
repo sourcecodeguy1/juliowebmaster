@@ -54,7 +54,7 @@ const Resume = (props) => {
                                     </List>
                                 </div>
                             </div>
-                            <div style={{display: `flex`, justifyContent: `space-between`, fontSize: `14px`, marginTop: `15px`}}>
+                            <div style={{display: `flex`, justifyContent: `space-around`, fontSize: `14px`, marginTop: `15px`}}>
                                 <div>
                                     <strong>Source Control</strong>
                                     <List>
