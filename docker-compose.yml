@@ -1,6 +1,20 @@
 version: '3'
 
 services:
+  my-app:
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    image: juliowebmaster:prod
+    expose:
+      - 80
+    restart: always
+    environment:
+      VIRTUAL_HOST: juliowebmaster.com
+      LETSENCRYPT_HOST: juliowebmaster.com
+      LETSENCRYPT_EMAIL: juliowebmaster1@gmail.com
+    container_name: my-app
+
   nginx:
     image: nginx:1.13.1
     container_name: nginx-proxy
@@ -44,20 +58,6 @@ services:
       - html:/usr/share/nginx/html
       - certs:/etc/nginx/certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
-
-  my-app:
-    build:
-      context: .
-      dockerfile: Dockerfile-prod
-    image: juliowebmaster:prod
-    expose:
-      - 80
-    restart: always
-    environment:
-      VIRTUAL_HOST: juliowebmaster.com
-      LETSENCRYPT_HOST: juliowebmaster.com
-      LETSENCRYPT_EMAIL: juliowebmaster1@gmail.com
-    container_name: my-app
 
 volumes:
   db_data:
