@@ -52,5 +52,5 @@ jobs:
               docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
               docker pull ${{ secrets.DOCKERHUB_USERNAME }}/juliowebmaster:prod
               #docker run -dit -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/juliowebmaster:prod
-              cd ~
+              echo $(pwd)
               docker-compose -f docker-compose.yml up -d --build
