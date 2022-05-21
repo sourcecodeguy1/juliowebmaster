@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: ./Dockerfile-prod
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/juliowebmaster:prod
 
@@ -47,10 +47,5 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script_stop: true
           script: |
-              #docker stop $(docker ps -a -q)
-              #docker system prune -a
-              docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-              docker pull ${{ secrets.DOCKERHUB_USERNAME }}/juliowebmaster:prod
-              #docker run -dit -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/juliowebmaster:prod
-              echo $(pwd)
-              docker-compose -f docker-compose.yml up -d --build
+              docker-compose down
+              docker-compose up -d --build

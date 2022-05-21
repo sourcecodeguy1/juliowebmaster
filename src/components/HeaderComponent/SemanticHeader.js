@@ -5,7 +5,7 @@ const SemanticHeader = (props) => {
     return (
         <div>
             <StyledSegment>
-                HELLO! I'M JULIO.
+                HELLO! I'M JULIO.!!!!!
                 <StyledContainer>Full-stack Developer</StyledContainer>
             </StyledSegment>
         </div>
