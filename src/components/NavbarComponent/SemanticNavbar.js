@@ -20,14 +20,12 @@ const SemanticNavbar = (props) => {
                 <Menu.Item
                     as={Link}
                     name='home'
-                    active={activeItem === 'home'}
                     onClick={handleItemClick}
                     to={`/`}
                 />
                 <Menu.Item
                     as={Link}
                     name='Resume'
-                    active={activeItem === 'Resume'}
                     onClick={handleItemClick}
                     to={`/resume`}
                 />

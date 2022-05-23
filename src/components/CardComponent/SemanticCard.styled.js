@@ -1,16 +1,31 @@
 import styled from "styled-components";
-import { Card } from 'semantic-ui-react';
+import { Card, List } from 'semantic-ui-react';
 
 export const StyledCard = styled(Card)`
-    border-radius: unset !important;
-    height: 747px;
-    width: 25% !important;
+    height: 447px;
+    width: 300px !important;
     text-align: center;
+
+    @media screen and (min-width: 1500px) {
+    width: 450px !important;
+    }
 
     @media screen and (max-width: 900px) {
     width: 100% !important;
     height: unset;
     text-align: center;
+    }
+`;
+
+export const StyledList = styled(List)`
+    max-height: 50px;
+    
+    @media screen and (min-width: 901px) and (max-width: 1500px) {
+    max-height: unset;
+    }
+    
+    @media screen and (max-width: 900px) {
+    max-height: unset;
     }
 `;
 
