@@ -47,6 +47,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script_stop: true
           script: |
-              cd nginx.tmpl
+              cd nginx-proxy
               docker-compose down
               docker-compose pull && docker-compose up --build -d
