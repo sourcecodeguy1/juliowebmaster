@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { Card, List } from 'semantic-ui-react';
+import { Card, List, Container } from 'semantic-ui-react';
 
 export const StyledCard = styled(Card)`
     height: 447px;
     width: 300px !important;
     text-align: center;
+    border: 1px solid black !important;
 
     @media screen and (min-width: 1500px) {
     width: 450px !important;
@@ -14,6 +15,19 @@ export const StyledCard = styled(Card)`
     width: 100% !important;
     height: unset;
     text-align: center;
+    }
+    
+    &:hover{
+    border-color: red !important;
+    }
+`;
+
+export const StyledDiv = styled(Container)`
+    display: flex;
+    justify-content: space-evenly;
+    
+    @media screen and (max-width: 900px) {
+    flex-direction: column;
     }
 `;
 

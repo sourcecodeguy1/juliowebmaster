@@ -3,7 +3,7 @@ import SemanticHeader from "../HeaderComponent/SemanticHeader";
 import SemanticCard from "../CardComponent/SemanticCard";
 import SemanticNavbar from "../NavbarComponent/SemanticNavbar";
 
-import App from '../../App.css';
+import {StyledDiv} from "../CardComponent/SemanticCard.styled"
 
 const Home = (props) => {
     return(
@@ -11,11 +11,11 @@ const Home = (props) => {
             <SemanticHeader />
             <SemanticNavbar/>
             <br />
-            <div className={`project-title`}>
+            <div style={{textAlign: `center`}}>
                 <h1>Projects</h1>
             </div>
             <br />
-            <div className={`cardWrapper`}>
+            <StyledDiv as={`div`}>
                 <SemanticCard
                     title={`Crud App`}
                     description={[
@@ -50,11 +50,11 @@ const Home = (props) => {
                         `Created MySQL database to store users and user's information.`
                     ]}
                     app_description={
-                        `Creating a mini social network for ddr player. They can post pictures,
+                        `Creating a mini social network for DDR player. They can post pictures,
                         videos and more.`
                     }
                 />
-            </div>
+            </StyledDiv>
         </div>
     )
 };

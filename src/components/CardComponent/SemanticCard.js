@@ -14,9 +14,10 @@ const SemanticCard = ({title, description, app_description}) => {
                     <Card.Content>
                         <h3>Programming Stack</h3>
                         <StyledList bulleted>
-                                {description.map(function (name, index){
-                                    return <List.Item key={index}>{name}</List.Item>;
-                                })}
+                            {description.map(function (name, index){
+                                return <List.Item key={index}>{name}</List.Item>;
+                                })
+                            }
                         </StyledList>
                     </Card.Content>
                     <Card.Content>
