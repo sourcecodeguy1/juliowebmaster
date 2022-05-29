@@ -9,7 +9,5 @@ RUN yarn && yarn build
 # Stage - Production
 FROM nginx:1.17-alpine
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/*
-COPY ./website.conf /etc/nginx/conf.d/website.conf
-EXPOSE 80
+EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
