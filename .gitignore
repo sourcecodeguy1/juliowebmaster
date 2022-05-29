@@ -8,6 +8,9 @@
 # docker-compose file
 docker-compose.yml
 
+# webconfig
+website.conf
+
 # testing
 /coverage
 
