@@ -102,10 +102,12 @@ const Resume = (props) => {
                                 <span style={{backgroundColor: `teal`, color: `white`, borderRadius: `5px`, padding: `7px`, fontSize: `16px`}}>Current</span>
                                 <List bulleted>
                                     <List.Item>Creating landing pages for a variety of different departments for marketing, sales, accounting, and etc.</List.Item>
-                                    <List.Item>Using a combination of different front-end programming languages such as HTML, CSS, JavaScript.</List.Item>
+                                    <List.Item>Using a combination of different front-end programming languages such as HTML, CSS, and JavaScript.</List.Item>
                                     <List.Item>Utilizing Flexbox to make mobile responsive websites.</List.Item>
                                     <List.Item>Working under the Laravel framework with PHP and MySQL for back-end programming.</List.Item>
                                     <List.Item>Utilizing Bitbucket to push code under a variety of repositories.</List.Item>
+                                    <List.Item>Creating Controllers, Models, and EventListeners through the php artisan command.</List.Item>
+                                    <List.Item>Utilizing Unit testing to make sure code works before pushing to repository</List.Item>
                                 </List>
                             </p>
 
