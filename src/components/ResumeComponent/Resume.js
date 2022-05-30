@@ -107,7 +107,7 @@ const Resume = (props) => {
                                     <List.Item>Working under the Laravel framework with PHP and MySQL for back-end programming.</List.Item>
                                     <List.Item>Utilizing Bitbucket to push code under a variety of repositories.</List.Item>
                                     <List.Item>Creating Controllers, Models, and EventListeners through the php artisan command.</List.Item>
-                                    <List.Item>Utilizing Unit testing to make sure code works before pushing to repository</List.Item>
+                                    <List.Item>Utilizing Unit testing to make sure code works before pushing to repository.</List.Item>
                                 </List>
                             </p>
 
