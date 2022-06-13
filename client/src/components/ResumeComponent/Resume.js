@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Card, List, Divider, Pagination } from "semantic-ui-react";
-import SemanticNavbar from "../NavbarComponent/SemanticNavbar";
 
 import {StyledCardResume} from '../CardComponent/SemanticCard.styled'
 
@@ -16,7 +15,6 @@ const Resume = (props) => {
 
     return(
         <>
-            <SemanticNavbar />
             <Card.Group>
                 <StyledCardResume left_card>
                     <Card.Content>
@@ -29,7 +27,7 @@ const Resume = (props) => {
                                 <a href="https://github.com/sourcecodeguy1?tab=repositories" target={`_blank`}> Sourcecodeguy1</a>
                             </p>
                             <p><span className={`fa fa-linkedin-square fa-lg`} style={{color: `teal`}}></span>
-                                <a href="https://www.linkedin.com/in/julio-sandoval-ba587613a/"> Julio Sandoval</a>
+                                <a href="client/src/components/ResumeComponent/Resume"> Julio Sandoval</a>
                             </p>
                         </Card.Description>
                         <Divider />

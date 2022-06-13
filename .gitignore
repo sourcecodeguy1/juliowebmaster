@@ -1,12 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#.env
+.env
+
 # dependencies
-/node_modules
+/client/node_modules
+/server/node_modules
 /.pnp
 .pnp.js
 
 # docker-compose file
 docker-compose.yml
+
+# server.utility.docker-compose file
+utility.docker-compose.yml
 
 # webconfig
 website.conf
@@ -16,6 +23,17 @@ website.conf
 
 # production
 /build
+
+# data
+/data
+
+# client
+/client/utility.Dockerfile
+/client/dev.Dockerfile
+
+# server
+/server/utility.Dockerfile
+/server/dev.Dockerfile
 
 # misc
 .DS_Store

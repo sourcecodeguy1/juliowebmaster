@@ -25,9 +25,15 @@ const SemanticNavbar = (props) => {
                 />
                 <Menu.Item
                     as={Link}
-                    name='Resume'
+                    name='resume'
                     onClick={handleItemClick}
                     to={`/resume`}
+                />
+                <Menu.Item
+                    as={Link}
+                    name='contact'
+                    onClick={handleItemClick}
+                    to={`/contact`}
                 />
             </StyledMenu>
         </div>
