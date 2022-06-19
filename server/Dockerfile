@@ -10,4 +10,6 @@ COPY . .
 
 RUN yarn install
 
-CMD ["yarn", "run", "start"]
+EXPOSE 80
+
+CMD ["node", "start"]
