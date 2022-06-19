@@ -45,7 +45,7 @@ jobs:
           context: ./server
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SERVER_DOCKER_REPO }}:latest
 
       - name: Deploy to Vultr Server
         uses: appleboy/ssh-action@master
