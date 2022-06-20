@@ -2,11 +2,11 @@ FROM node:alpine
 
 WORKDIR /app
 
-COPY ./package*.json ./
+COPY ../server/package*.json ./
 
 RUN yarn cache clean && yarn --update-checksums
 
-COPY .. ./
+COPY ../server ./
 
 RUN yarn install
 
