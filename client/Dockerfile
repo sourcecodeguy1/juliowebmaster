@@ -1,9 +1,9 @@
 FROM node:alpine as build
 
 WORKDIR /usr/src/app
-COPY ./client/package*.json ./
+COPY package*.json ./
 RUN yarn cache clean && yarn --update-checksums
-COPY ./client ./
+COPY .. ./
 RUN yarn && yarn build
 
 # Stage - Production
