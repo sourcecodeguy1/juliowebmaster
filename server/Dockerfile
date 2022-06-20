@@ -12,4 +12,4 @@ RUN yarn install
 
 EXPOSE 80
 
-CMD ["node", "start"]
+CMD ["yarn", "run", "start"]
