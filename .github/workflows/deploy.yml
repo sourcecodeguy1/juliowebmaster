@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./server
-          file: ./Dockerfile
+          file: ./server/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SERVER_DOCKER_REPO }}:latest
 
