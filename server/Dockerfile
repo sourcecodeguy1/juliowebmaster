@@ -6,7 +6,7 @@ COPY package*.json ./app
 
 RUN yarn cache clean && yarn --update-checksums
 
-COPY . ./app
+COPY . .
 
 RUN yarn install
 
