@@ -35,7 +35,7 @@ jobs:
       - name: Build and Push Client
         uses: docker/build-push-action@v2
         with:
-          context: ./client
+          context: .
           file: ./client/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:prod
@@ -43,7 +43,7 @@ jobs:
       - name: Build and Push Server
         uses: docker/build-push-action@v2
         with:
-          context: ./server
+          context: .
           file: ./server/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SERVER_DOCKER_REPO }}:latest
