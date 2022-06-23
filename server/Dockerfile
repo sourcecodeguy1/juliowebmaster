@@ -1,10 +1,9 @@
-FROM node:alpine
+FROM node:14-alpine
 
-WORKDIR /app
+WORKDIR "/app"
 COPY package.json ./
-COPY yarn.lock ./
 RUN yarn cache clean && yarn --update-checksums
 RUN yarn install
-COPY ./ ./
+COPY . .
 EXPOSE 3001
 CMD ["yarn", "run", "start"]
