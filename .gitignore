@@ -3,6 +3,9 @@
 #.env
 .env
 
+#nginx - default.conf
+/client/nginx
+
 # dependencies
 /client/node_modules
 /server/node_modules
