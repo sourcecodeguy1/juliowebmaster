@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const mysql = require('./mysql.conf');
 const bodyParser = require('body-parser');
+const mysql_connection = require("./mysql.conf");
 
 app.use(cors());
 
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/test', (req, res) => {
     res.send("Hello from the back-end server!!!");
     // Get dummy data for testing
-    mysql.query("SELECT * FROM test", (error, rows) => {
+    mysql_connection.query("SELECT * FROM test", (error, rows) => {
         if(error){
             res.send(error)
         } else {
@@ -28,6 +28,6 @@ app.get('/test', (req, res) => {
     });
 });
 
-app.listen(3001, () => {
+app.listen('3001', () => {
     console.log('Listening on port 3001');
 });
