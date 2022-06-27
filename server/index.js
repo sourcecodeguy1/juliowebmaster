@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/test', (req, res) => {
     res.send("Hello from the back-end server!!!");
     // Get dummy data for testing
-    /*mysql.query("SELECT * FROM users", (error, rows) => {
+    mysql.query("SELECT * FROM users", (error, rows) => {
         if(error){
             res.send(error)
         } else {
@@ -25,7 +25,7 @@ app.get('/test', (req, res) => {
                 res.json({result: "Nothing here!"});
             }
         }
-    });*/
+    });
 });
 
 app.listen('3001', () => {

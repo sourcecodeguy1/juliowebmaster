@@ -27,11 +27,11 @@ const Home = (props) => {
         <div>
 
             <br />
-            {/*<div>
+            {<div>
                 {post.map((p, index) => (
                     <div key={index}>{p.first_name}&nbsp;{p.last_name}</div>
                 ))}
-            </div>*/}
+            </div>}
             <div style={{textAlign: `center`}}>
                 <h1>Projects</h1>
             </div>
