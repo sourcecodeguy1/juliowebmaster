@@ -14,8 +14,8 @@ const Home = (props) => {
             const URL = '/api/test';
             try {
                 const res = await axios.get(URL);
-                console.log(res);
-                setPost(res);
+                console.log(res.data);
+                setPost(res.data);
             } catch (error) {
                 console.log(error);
             }
@@ -28,7 +28,7 @@ const Home = (props) => {
 
             <br />
             <div>
-                {post}
+                {post.first_name} - {post.last_name}
             </div>
             <div style={{textAlign: `center`}}>
                 <h1>Projects</h1>
