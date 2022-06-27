@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/test', (req, res) => {
     res.send("Hello from the back-end server!!!");
     // Get dummy data for testing
-    mysql.query("SELECT * FROM users", (error, rows) => {
+    mysql.query("SELECT * FROM test", (error, rows) => {
         if(error){
             res.send(error)
         } else {
@@ -28,6 +28,6 @@ app.get('/test', (req, res) => {
     });
 });
 
-app.listen('3001', () => {
+app.listen(3001, () => {
     console.log('Listening on port 3001');
 });
