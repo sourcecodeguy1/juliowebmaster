@@ -1,4 +1,4 @@
-let mysql = require('mysql2');
+let mysql = require('mysql');
 
 let mysql_connection = mysql.createPool({
   connectionLimit : 100,
