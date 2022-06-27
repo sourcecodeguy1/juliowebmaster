@@ -13,7 +13,7 @@ let mysql_connection = mysql.createPool({
   connect_timeout :10
 });
 
-if(process.env.NODE_ENV === "development"){
+if(process.env.NODE_ENV === "production"){
   mysql_connection.getConnection(function (err) {
     if(err){
       console.log(err);
