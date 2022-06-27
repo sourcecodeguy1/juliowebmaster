@@ -20,9 +20,9 @@ app.get('/test', (req, res) => {
             res.send(error)
         } else {
             if(rows.length > 0){
-                res.json(rows);
+                res.send(rows);
             }else{
-                res.json({result: "Nothing here!"});
+                res.send("Nothing here!");
             }
         }
     });
