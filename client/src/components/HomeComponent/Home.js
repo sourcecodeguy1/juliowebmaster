@@ -28,7 +28,7 @@ const Home = (props) => {
 
             <br />
             <div>
-                {post}
+                {post.first_name}
             </div>
             <div style={{textAlign: `center`}}>
                 <h1>Projects</h1>
