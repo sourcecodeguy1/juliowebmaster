@@ -28,9 +28,7 @@ const Home = (props) => {
 
             <br />
             <div>
-                {post.map((p, index) => (
-                    <div key={index}>{p.first_name}&nbsp;{p.last_name}</div>
-                ))}
+                {post.data}
             </div>
             <div style={{textAlign: `center`}}>
                 <h1>Projects</h1>
