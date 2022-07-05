@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {ContactContainer} from './SemanticContact.styled'
 import {Button, Form, Input, TextArea} from 'semantic-ui-react'
-import useInputState from "../../hooks/useInputState";
 
 const SemanticContact = (props) => {
 
