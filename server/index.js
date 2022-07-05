@@ -13,9 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/test', (req, res) => {
-    //res.send("Hello from the back-end server!!!");
     // Get dummy data for testing
-    mysql_connection.query("SELECT * FROM test", (error, rows) => {
+    mysql_connection.query("SELECT * FROM users", (error, rows) => {
         if(error){
             res.send(error)
         } else {
