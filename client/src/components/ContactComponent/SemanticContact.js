@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {ContactContainer} from './SemanticContact.styled'
-import {Button, Form, Input, TextArea} from 'semantic-ui-react'
+import {Button, Form, Input, TextArea, Message} from 'semantic-ui-react'
+import validator from 'validator';
 
 const SemanticContact = (props) => {
 
@@ -14,7 +15,13 @@ const SemanticContact = (props) => {
         firstname: "",
         email: "",
         message: "",
-    })
+    });
+
+    const [form, setForm] = useState({
+        success: false,
+        error: false,
+        submitted: false
+    });
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -40,6 +47,8 @@ const SemanticContact = (props) => {
                 case "email":
                     if (!value) {
                         stateObj[name] = "Please enter your email.";
+                    }else if(!validator.isEmail(value)){
+                        stateObj[name] = "Please enter a valid email.";
                     }
                     break;
 
@@ -56,10 +65,17 @@ const SemanticContact = (props) => {
         });
     };
 
+    const myTimeout = () => {
+        setForm({submitted: false, success: true});
+        setInput({firstname: "", email: "", message: ""});
+    };
+
     const handleClick = (e) => {
         e.preventDefault();
 
+        setTimeout(myTimeout, 3000);
         // call axios to save data to database
+        setForm({submitted: true});
 
     };
 
@@ -67,7 +83,7 @@ const SemanticContact = (props) => {
         <ContactContainer>
             <h1>Contact Me!</h1>
             <h1>First Name value is: {input.firstname}</h1>
-            <Form>
+            <Form error success className={form.submitted === true ? `loading` : ``}>
                 <Form.Field
                     id='first-name'
                     name={`firstname`}
@@ -101,6 +117,23 @@ const SemanticContact = (props) => {
                 <Button
                     className={input.firstname === "" || input.email === "" || input.message === "" ? "disabled" : ""}
                     onClick={handleClick}>Submit</Button>
+                {
+                    form.success === true
+                    ? <Message
+                            success
+                            header='Form Completed'
+                            content="You're all signed up for the newsletter"
+                        />
+                    :
+                    form.error === true
+                    ? <Message
+                            error
+                            header='Action Forbidden'
+                            content='You can only sign up for an account once with a given e-mail address.'
+                        />
+                        :
+                        ""
+                }
             </Form>
         </ContactContainer>
     );
