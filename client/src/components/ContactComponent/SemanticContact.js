@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ContactContainer} from './SemanticContact.styled'
-import {Button, Form, Input, TextArea, Message} from 'semantic-ui-react'
+import {Button, Form, Input, Message, TextArea} from 'semantic-ui-react'
 import validator from 'validator';
 import axios from "axios";
 
@@ -78,9 +78,8 @@ const SemanticContact = (props) => {
         }
 
         ).then((result) => {
-            let response = result.statusText;
-            console.log(response);
-            if(response === "OK"){
+
+            if(result.statusText === "OK"){
                 setForm({submitted: false, success: true});
                 setInput({firstname: "", email: "", message: ""});
             } else {
@@ -93,7 +92,7 @@ const SemanticContact = (props) => {
     return(
         <ContactContainer>
             <h1>Contact Me!</h1>
-            <p>If you need help on creating your website, I may be able to help you out.</p>
+            <div className={`contact-me-help`}>If you need help on creating your website, I may be able to help you out.</div>
             <Form error success className={form.submitted === true ? `loading` : ``}>
                 <Form.Field
                     id='first-name'

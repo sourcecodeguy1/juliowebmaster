@@ -6,5 +6,5 @@ export const ContactContainer = styled(Container)`
     
     h1{text-align: center;}
     
-    p{text-align: center;}
+    .contact-me-help{text-align: center;}
 `;
