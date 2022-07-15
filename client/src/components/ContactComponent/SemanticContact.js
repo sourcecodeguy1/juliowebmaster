@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {ContactContainer} from './SemanticContact.styled'
 import {Button, Form, Input, TextArea, Message} from 'semantic-ui-react'
 import validator from 'validator';
+import axios from "axios";
 
 const SemanticContact = (props) => {
 
@@ -65,17 +66,27 @@ const SemanticContact = (props) => {
         });
     };
 
-    const myTimeout = () => {
-        setForm({submitted: false, success: true});
-        setInput({firstname: "", email: "", message: ""});
-    };
-
     const handleClick = (e) => {
         e.preventDefault();
 
-        setTimeout(myTimeout, 3000);
-        // call axios to save data to database
         setForm({submitted: true});
+
+        axios.post('/api/send-email', {
+           firstName: input.firstname,
+           email: input.email,
+           message: input.message,
+        }
+
+        ).then((result) => {
+            let response = result.statusText;
+            console.log(response);
+            if(response === "OK"){
+                setForm({submitted: false, success: true});
+                setInput({firstname: "", email: "", message: ""});
+            } else {
+                setForm({submitted: false, error: true});
+            }
+        });
 
     };
 
@@ -115,21 +126,21 @@ const SemanticContact = (props) => {
                     error={error.message !== "" ? error.message : null}
                 />
                 <Button
-                    className={input.firstname === "" || input.email === "" || input.message === "" ? "disabled" : ""}
+                    className={input.firstname === "" || input.email === "" || !validator.isEmail(input.email) || input.message === "" ? "disabled" : ""}
                     onClick={handleClick}>Submit</Button>
                 {
                     form.success === true
                     ? <Message
                             success
                             header='Form Completed'
-                            content="You're all signed up for the newsletter"
+                            content="Your message was sent!"
                         />
                     :
                     form.error === true
                     ? <Message
                             error
-                            header='Action Forbidden'
-                            content='You can only sign up for an account once with a given e-mail address.'
+                            header='System Error'
+                            content='Something went wrong, please try again later.'
                         />
                         :
                         ""

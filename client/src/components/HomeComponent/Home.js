@@ -6,32 +6,8 @@ import {StyledDiv} from "../CardComponent/SemanticCard.styled"
 
 const Home = (props) => {
 
-    const [post, setPost] = useState([]);
-    // make axios call to api
-    // for dummy data
-    useEffect(() => {
-        async function fetchPost() {
-            const URL = '/api/test';
-            try {
-                const res = await axios.get(URL);
-                console.log(res.data);
-                setPost(res.data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        fetchPost();
-    }, []);
-
     return(
         <div>
-
-            <br />
-            <div>
-                {post.map((p, index) => (
-                    <div key={index}>{p.first_name}&nbsp;{p.last_name}</div>
-                ))}
-            </div>
             <div style={{textAlign: `center`}}>
                 <h1>Projects</h1>
             </div>
