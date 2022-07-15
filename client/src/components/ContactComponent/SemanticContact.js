@@ -93,7 +93,7 @@ const SemanticContact = (props) => {
     return(
         <ContactContainer>
             <h1>Contact Me!</h1>
-            <h1>First Name value is: {input.firstname}</h1>
+            <p>If you need help on creating your website, I may be able to help you out.</p>
             <Form error success className={form.submitted === true ? `loading` : ``}>
                 <Form.Field
                     id='first-name'

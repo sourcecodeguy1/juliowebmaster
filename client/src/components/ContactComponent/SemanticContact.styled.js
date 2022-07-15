@@ -5,4 +5,6 @@ export const ContactContainer = styled(Container)`
     padding-top: 40px;
     
     h1{text-align: center;}
+    
+    p{text-align: center;}
 `;
