@@ -78,8 +78,7 @@ const SemanticContact = (props) => {
         }
 
         ).then((result) => {
-
-            if(result.statusText === "OK"){
+            if(result.data.success === "OK"){
                 setForm({submitted: false, success: true});
                 setInput({firstname: "", email: "", message: ""});
             } else {
