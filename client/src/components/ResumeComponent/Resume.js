@@ -35,23 +35,41 @@ const Resume = (props) => {
                         <Table celled>
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.HeaderCell>Front-End</Table.HeaderCell>
-                                    <Table.HeaderCell>Back-End</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign={`center`} colspan={`2`}>Front-End</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
 
                             <Table.Body>
                                 <Table.Row>
                                     <Table.Cell>HTML5</Table.Cell>
-                                    <Table.Cell>PHP</Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
                                     <Table.Cell>CSS3</Table.Cell>
-                                    <Table.Cell>MySQL</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
                                     <Table.Cell>JavaScript</Table.Cell>
+                                    <Table.Cell>jQuery</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell>React</Table.Cell>
+                                    <Table.Cell>Bootstrap 4/5</Table.Cell>
+                                </Table.Row>
+                            </Table.Body>
+                        </Table>
+
+                        <Table celled>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell textAlign={`center`} colspan={`2`}>Back-End</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+
+                            <Table.Body>
+                                <Table.Row>
+                                    <Table.Cell>PHP</Table.Cell>
+                                    <Table.Cell>MySQL</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
                                     <Table.Cell>Node Js</Table.Cell>
+                                    <Table.Cell>Express</Table.Cell>
                                 </Table.Row>
                             </Table.Body>
                         </Table>
@@ -59,27 +77,18 @@ const Resume = (props) => {
                         <Table celled structured>
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.HeaderCell>Source Control</Table.HeaderCell>
-                                    <Table.HeaderCell>Frameworks</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign={`center`} colspan={`2`}>Source Control</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
 
                             <Table.Body>
                                 <Table.Row>
                                     <Table.Cell>Git</Table.Cell>
-                                    <Table.Cell>React</Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
                                     <Table.Cell>GitHub</Table.Cell>
-                                    <Table.Cell>Laravel</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
                                     <Table.Cell>GitLab</Table.Cell>
-                                    <Table.Cell>Bootstrap 5</Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
                                     <Table.Cell>Jira</Table.Cell>
-                                    <Table.Cell>Vagrant</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
                                     <Table.Cell style={{background: `#f9fafb`, fontWeight: `bold`}} colspan={`2`} textAlign={`center`}>DevOps</Table.Cell>
