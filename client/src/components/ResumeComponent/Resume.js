@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Card, List, Divider, Pagination } from "semantic-ui-react";
+import {Card, List, Divider, Pagination, Table } from "semantic-ui-react";
 
 import {StyledCardResume} from '../CardComponent/SemanticCard.styled'
 
@@ -9,8 +9,8 @@ const Resume = (props) => {
 
     const handlePageChange = (e, data) => {
         setActivePage(data.activePage);
-        console.log(data.activePage);
-        console.log("setActive ", activePage);
+        //console.log(data.activePage);
+        //console.log("setActive ", activePage);
     }
 
     return(
@@ -26,13 +26,73 @@ const Resume = (props) => {
                             <p><span className={`fa fa-github fa-lg`} style={{color: `teal`}}></span>
                                 <a href="https://github.com/sourcecodeguy1?tab=repositories" target={`_blank`}> Sourcecodeguy1</a>
                             </p>
-                            <p><span className={`fa fa-linkedin-square fa-lg`} style={{color: `teal`}}></span>
-                                <a href="client/src/components/ResumeComponent/Resume"> Julio Sandoval</a>
+                            <p><span className={`fa fa-linkedin fa-lg`} style={{color: `teal`}}></span>
+                                <a href="https://www.linkedin.com/in/julio-sandoval-ba587613a/" target={`_blank`}> Julio Sandoval</a>
                             </p>
                         </Card.Description>
                         <Divider />
                         <Card.Header><span className={`fa fa-asterisk fa-lg`} style={{color: `teal`}}>&nbsp;</span>Skills</Card.Header>
-                        <Card.Description>
+                        <Table celled>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>Front-End</Table.HeaderCell>
+                                    <Table.HeaderCell>Back-End</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+
+                            <Table.Body>
+                                <Table.Row>
+                                    <Table.Cell>HTML5</Table.Cell>
+                                    <Table.Cell>PHP</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell>CSS3</Table.Cell>
+                                    <Table.Cell>MySQL</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell>JavaScript</Table.Cell>
+                                    <Table.Cell>Node Js</Table.Cell>
+                                </Table.Row>
+                            </Table.Body>
+                        </Table>
+
+                        <Table celled structured>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>Source Control</Table.HeaderCell>
+                                    <Table.HeaderCell>Frameworks</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+
+                            <Table.Body>
+                                <Table.Row>
+                                    <Table.Cell>Git</Table.Cell>
+                                    <Table.Cell>React</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell>GitHub</Table.Cell>
+                                    <Table.Cell>Laravel</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell>GitLab</Table.Cell>
+                                    <Table.Cell>Bootstrap 5</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell>Jira</Table.Cell>
+                                    <Table.Cell>Vagrant</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell style={{background: `#f9fafb`, fontWeight: `bold`}} colspan={`2`} textAlign={`center`}>DevOps</Table.Cell>
+                                </Table.Row>
+
+                                <Table.Row>
+                                    <Table.Cell>CI/CD</Table.Cell>
+                                    <Table.Cell>Docker</Table.Cell>
+                                </Table.Row>
+
+                            </Table.Body>
+                        </Table>
+                        {/*<Card.Description>
                             <div style={{display: `flex`, justifyContent: `space-around`, fontSize: `14px`}}>
                                 <div>
                                     <strong>Front-End</strong>
@@ -70,8 +130,67 @@ const Resume = (props) => {
                                         <List.Item>NGINX Apache Node Js</List.Item>
                                     </List>
                                 </div>
+
+                            </div>
+                            <div>
+                                <div>{/*<Card.Description>
+                            <div style={{display: `flex`, justifyContent: `space-around`, fontSize: `14px`}}>
+                                <div>
+                                    <strong>Front-End</strong>
+                                    <List>
+                                        <List.Item>HTML Blade Twig</List.Item>
+                                        <List.Item>CSS3</List.Item>
+                                        <List.Item>JavaScript ES6 jQuery</List.Item>
+                                    </List>
+                                </div>
+
+                                <div>
+                                    <strong>Back-End</strong>
+                                    <List>
+                                        <List.Item>REST PHP MySQL</List.Item>
+                                        <List.Item>Composer Homestead Vagrant</List.Item>
+                                        <List.Item>NGINX Apache Node Js</List.Item>
+                                    </List>
+                                </div>
+                            </div>
+                            <div style={{display: `flex`, justifyContent: `space-around`, fontSize: `14px`, marginTop: `15px`}}>
+                                <div>
+                                    <strong>Source Control</strong>
+                                    <List>
+                                        <List.Item>Git</List.Item>
+                                        <List.Item>GitHub GitLab</List.Item>
+                                        <List.Item>Bitbucket</List.Item>
+                                    </List>
+                                </div>
+
+                                <div>
+                                    <strong>Frameworks</strong>
+                                    <List>
+                                        <List.Item>REST PHP MySQL</List.Item>
+                                        <List.Item>Composer Homestead Vagrant</List.Item>
+                                        <List.Item>NGINX Apache Node Js</List.Item>
+                                    </List>
+                                </div>
+
+                            </div>
+                            <div>
+                                <div>
+                                    <strong>DevOps</strong>
+                                    <List>
+                                        <List.Item>CI/CD DevOps</List.Item>
+                                        <List.Item>Docker</List.Item>
+                                    </List>
+                                </div>
                             </div>
                         </Card.Description>
+                                    <strong>DevOps</strong>
+                                    <List>
+                                        <List.Item>CI/CD DevOps</List.Item>
+                                        <List.Item>Docker</List.Item>
+                                    </List>
+                                </div>
+                            </div>
+                        </Card.Description>*/}
                         <Divider />
                         <Card.Header><span className={`fa fa-graduation-cap fa-lg`} style={{color: `teal`}}>&nbsp;</span>Education</Card.Header>
                         <Card.Description>
