@@ -64,7 +64,7 @@ const Resume = (props) => {
 
                             <Table.Body>
                                 <Table.Row>
-                                    <Table.Cell>PHP</Table.Cell>
+                                    <Table.Cell>PHP/Laravel</Table.Cell>
                                     <Table.Cell>MySQL</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
