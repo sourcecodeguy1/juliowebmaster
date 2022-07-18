@@ -53,11 +53,17 @@ export const StyledCardResume = styled(Card)`
     box-shadow: 0 1px 15px 0 #d4d4d5, 0 0 0 1px #d4d4d5 !important;
     margin-top: ${props => props.pagination ? "unset" : "70px !important"};
     margin: ${props => props.pagination ? "20px auto !important" : ""};
-    text-align: ${props => props.pagination ? "center" : ""};
+    text-align: ${props => props.pagination || props.left_card ? "center" : ""};
 
     @media screen and (max-width: 900px) {
     width: 90% !important;
     height: unset;
     text-align: center;
-    }
+    };
+    
+    @media screen and (min-width: 768px) {
+        .devops{background-color: #f9fafb; font-weight: bold;}
+    };
+    
+    tbody{text-align: center;}
 `;

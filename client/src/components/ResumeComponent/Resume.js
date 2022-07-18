@@ -91,7 +91,7 @@ const Resume = (props) => {
                                     <Table.Cell>Jira</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
-                                    <Table.Cell style={{background: `#f9fafb`, fontWeight: `bold`}} colspan={`2`} textAlign={`center`}>DevOps</Table.Cell>
+                                    <Table.Cell className={`devops`} colspan={`2`} textAlign={`center`}>DevOps</Table.Cell>
                                 </Table.Row>
 
                                 <Table.Row>
@@ -101,105 +101,7 @@ const Resume = (props) => {
 
                             </Table.Body>
                         </Table>
-                        {/*<Card.Description>
-                            <div style={{display: `flex`, justifyContent: `space-around`, fontSize: `14px`}}>
-                                <div>
-                                    <strong>Front-End</strong>
-                                    <List>
-                                        <List.Item>HTML Blade Twig</List.Item>
-                                        <List.Item>CSS3</List.Item>
-                                        <List.Item>JavaScript ES6 jQuery</List.Item>
-                                    </List>
-                                </div>
 
-                                <div>
-                                    <strong>Back-End</strong>
-                                    <List>
-                                        <List.Item>REST PHP MySQL</List.Item>
-                                        <List.Item>Composer Homestead Vagrant</List.Item>
-                                        <List.Item>NGINX Apache Node Js</List.Item>
-                                    </List>
-                                </div>
-                            </div>
-                            <div style={{display: `flex`, justifyContent: `space-around`, fontSize: `14px`, marginTop: `15px`}}>
-                                <div>
-                                    <strong>Source Control</strong>
-                                    <List>
-                                        <List.Item>Git</List.Item>
-                                        <List.Item>GitHub GitLab</List.Item>
-                                        <List.Item>Bitbucket</List.Item>
-                                    </List>
-                                </div>
-
-                                <div>
-                                    <strong>Frameworks</strong>
-                                    <List>
-                                        <List.Item>REST PHP MySQL</List.Item>
-                                        <List.Item>Composer Homestead Vagrant</List.Item>
-                                        <List.Item>NGINX Apache Node Js</List.Item>
-                                    </List>
-                                </div>
-
-                            </div>
-                            <div>
-                                <div>{/*<Card.Description>
-                            <div style={{display: `flex`, justifyContent: `space-around`, fontSize: `14px`}}>
-                                <div>
-                                    <strong>Front-End</strong>
-                                    <List>
-                                        <List.Item>HTML Blade Twig</List.Item>
-                                        <List.Item>CSS3</List.Item>
-                                        <List.Item>JavaScript ES6 jQuery</List.Item>
-                                    </List>
-                                </div>
-
-                                <div>
-                                    <strong>Back-End</strong>
-                                    <List>
-                                        <List.Item>REST PHP MySQL</List.Item>
-                                        <List.Item>Composer Homestead Vagrant</List.Item>
-                                        <List.Item>NGINX Apache Node Js</List.Item>
-                                    </List>
-                                </div>
-                            </div>
-                            <div style={{display: `flex`, justifyContent: `space-around`, fontSize: `14px`, marginTop: `15px`}}>
-                                <div>
-                                    <strong>Source Control</strong>
-                                    <List>
-                                        <List.Item>Git</List.Item>
-                                        <List.Item>GitHub GitLab</List.Item>
-                                        <List.Item>Bitbucket</List.Item>
-                                    </List>
-                                </div>
-
-                                <div>
-                                    <strong>Frameworks</strong>
-                                    <List>
-                                        <List.Item>REST PHP MySQL</List.Item>
-                                        <List.Item>Composer Homestead Vagrant</List.Item>
-                                        <List.Item>NGINX Apache Node Js</List.Item>
-                                    </List>
-                                </div>
-
-                            </div>
-                            <div>
-                                <div>
-                                    <strong>DevOps</strong>
-                                    <List>
-                                        <List.Item>CI/CD DevOps</List.Item>
-                                        <List.Item>Docker</List.Item>
-                                    </List>
-                                </div>
-                            </div>
-                        </Card.Description>
-                                    <strong>DevOps</strong>
-                                    <List>
-                                        <List.Item>CI/CD DevOps</List.Item>
-                                        <List.Item>Docker</List.Item>
-                                    </List>
-                                </div>
-                            </div>
-                        </Card.Description>*/}
                         <Divider />
                         <Card.Header><span className={`fa fa-graduation-cap fa-lg`} style={{color: `teal`}}>&nbsp;</span>Education</Card.Header>
                         <Card.Description>
