@@ -46,7 +46,7 @@ export const StyledList = styled(List)`
 export const StyledCardResume = styled(Card)`
     border-radius: ${props => props.pagination ? "unset" : "20px !important"};
     height: ${props => props.left_card ? "unset" : props.pagination ? "unset" : ""};
-    width: ${props => props.right_card ? "67% !important" :  props.pagination ? "22% !important" : "20% !important"};
+    width: ${props => props.right_card ? "54% !important" :  props.pagination ? "unset !important" : "31% !important"};
     margin-left: ${props => props.pagination ? "unset" : "5% !important"};
     font-size: 16px !important;
     font-family: Arial;
