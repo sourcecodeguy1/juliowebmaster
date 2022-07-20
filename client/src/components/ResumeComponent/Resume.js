@@ -32,7 +32,7 @@ const Resume = (props) => {
                         </Card.Description>
                         <Divider />
                         <Card.Header><span className={`fa fa-asterisk fa-lg`} style={{color: `teal`}}>&nbsp;</span>Skills</Card.Header>
-                        <Table celled>
+                        <Table>
                             <Table.Header>
                                 <Table.Row>
                                     <Table.HeaderCell textAlign={`center`} colspan={`2`}>Front-End</Table.HeaderCell>
@@ -55,7 +55,7 @@ const Resume = (props) => {
                             </Table.Body>
                         </Table>
 
-                        <Table celled>
+                        <Table>
                             <Table.Header>
                                 <Table.Row>
                                     <Table.HeaderCell textAlign={`center`} colspan={`2`}>Back-End</Table.HeaderCell>
@@ -74,7 +74,7 @@ const Resume = (props) => {
                             </Table.Body>
                         </Table>
 
-                        <Table celled structured>
+                        <Table structured>
                             <Table.Header>
                                 <Table.Row>
                                     <Table.HeaderCell textAlign={`center`} colspan={`2`}>Source Control</Table.HeaderCell>

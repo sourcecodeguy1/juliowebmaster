@@ -54,6 +54,10 @@ export const StyledCardResume = styled(Card)`
     margin-top: ${props => props.pagination ? "unset" : "70px !important"};
     margin: ${props => props.pagination ? "20px auto !important" : ""};
     text-align: ${props => props.pagination || props.left_card ? "center" : ""};
+    
+    .ui.table tr:first-child td {
+        width: 50%;
+    }
 
     @media screen and (max-width: 900px) {
     width: 90% !important;
