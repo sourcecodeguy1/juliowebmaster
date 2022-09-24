@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/*app.get('/test', (req, res) => {
+app.get('/select', (req, res) => {
     // Get dummy data for testing
     mysql_connection.query("SELECT * FROM users", (error, rows) => {
         if(error){
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
             }
         }
     });
-});*/
+});
 
 app.get('/test', (req, res) => {
     res.send("This is a test.");
