@@ -29,6 +29,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
     });
 });*/
 
+app.get('/test', (req, res) => {
+    res.send("This is a test.");
+});
+
 app.post('/send-email', (req, res) => {
 
     // create reusable transporter object using the default SMTP transport
