@@ -26,6 +26,7 @@ const Home = (props) => {
                     }
                 />
                 <SemanticCard
+                    id={`job-listings`}
                     title={`Jobs Listing`}
                     description={[
                         `A React Js modern front-end framework web application`,
