@@ -36,7 +36,6 @@ const Home = (props) => {
                     app_description={
                         `This web application is a simple list of jobs where a user can filter by clicking specific
                          categories on the job list. This is a challenge from Frontend mentor.
-                         <a href="https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt">Job Listings</a>
                         `
                     }
                 />

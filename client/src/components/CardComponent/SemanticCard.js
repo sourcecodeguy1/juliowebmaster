@@ -14,7 +14,8 @@ const SemanticCard = ({title, description, app_description}) => {
                     <Card.Content>
                         <h3>Programming Stack</h3>
                         <StyledList bulleted>
-                            {description.map(function (name, index){
+                            {description.map((name, index) =>{
+                                console.log(title);
                                 return <List.Item key={index}>{name}</List.Item>;
                                 })
                             }
@@ -24,6 +25,11 @@ const SemanticCard = ({title, description, app_description}) => {
                         <h3>Project Description</h3>
                         <Card.Description style={{color: `black`}}>
                             {app_description}
+                            {title === "Jobs Listing"
+                                ?
+                                <a target={`_blank`} href={`https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt`}>jobs listing</a>
+                                : ""
+                            }
                         </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
