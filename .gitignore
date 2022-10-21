@@ -9,6 +9,9 @@
 /.pnp
 .pnp.js
 
+# nginx
+/nginx
+
 # docker-compose file
 docker-compose.yml
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7eb1fe22-da87-4242-9476-2aadb3960006" name="juliowebmaster">
+        <fileTransfer rootFolder="/root" accessType="SFTP" host="juliowebmaster.com" port="22" sshConfigId="663fcdbc-0742-4d0a-880a-3b21f7cfba4c" sshConfig="root@juliowebmaster.com:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

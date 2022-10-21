@@ -1,13 +1,13 @@
 import React from 'react';
-import {StyledSegment, StyledContainer} from './SemanticHeader.styled';
+import "../../App.css"
 
 const SemanticHeader = (props) => {
     return (
         <div>
-            <StyledSegment>
+            <div className={`header-bg-blue`}>
                 HELLO! I'M JULIO.
-                <StyledContainer>Full-stack Developer</StyledContainer>
-            </StyledSegment>
+                <div className={`job-title`}>Full-stack Developer</div>
+            </div>
         </div>
     )
 };
