@@ -1,10 +1,11 @@
+/*
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
 test('renders learn react link', () => {
- /* render(<App />);
+ /!* render(<App />);
   const linkElement = screen.getByText(/HELLO I'M JULIO/i, {selector: 'div'});
-  expect(linkElement).toBeInTheDocument();*/
+  expect(linkElement).toBeInTheDocument();*!/
   const getByTextContent = (text) => {
     // Passing function to `getByText`
     return screen.getByText((content, element) => {
@@ -16,3 +17,4 @@ test('renders learn react link', () => {
     })
   }
 });
+*/
