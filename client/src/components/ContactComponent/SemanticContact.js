@@ -82,12 +82,7 @@ const SemanticContact = (props) => {
 
         setForm({submitted: true});
 
-        setTimeout(function (){
-            setForm({submitted: false, error: true});
-            setInput({firstname: "", email: "", message: ""});
-        }, 3000);
-
-        /*axios.post('/api/send-email', {
+        axios.post('/api/send-email', {
            firstName: input.firstname,
            email: input.email,
            message: input.message,
@@ -100,7 +95,7 @@ const SemanticContact = (props) => {
             } else {
                 setForm({submitted: false, error: true});
             }
-        });*/
+        });
 
     };
 
