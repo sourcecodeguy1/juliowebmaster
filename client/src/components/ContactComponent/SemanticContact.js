@@ -101,8 +101,17 @@ const SemanticContact = (props) => {
 
     return(
         <MDBContainer>
+            <MDBRow className={`mt-3`}>
+                <MDBCol className={`text-center`}>
+                    <div><h2>Contact Me!</h2></div>
+                </MDBCol>
+            </MDBRow>
+            <MDBRow>
+                <MDBCol className={`text-center`}>
+                    <div><small>If you need help creating, maintaining, or updating your website, send me a message.</small></div>
+                </MDBCol>
+            </MDBRow>
             <MDBRow className={`mt-5`}>
-
                 <MDBCol lg={`3`}></MDBCol>
                 <MDBCol sm={`12`} lg={`6`}>
                     <MDBInput className={error.firstname !== "" ? "is-invalid" : ""} label='First name' id={`first-name`} name={`firstname`} type='text' value={input.firstname} onChange={handleInputChange} required />
