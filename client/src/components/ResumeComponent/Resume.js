@@ -8,26 +8,31 @@ import {
     MDBCol,
     MDBContainer,
     MDBRow,
-    MDBPagination,
-    MDBPaginationItem,
     MDBPaginationLink
 } from 'mdb-react-ui-kit';
 
-const Resume = (props) => {
-
+const Resume = () => {
+    const maxPageNumber = 3;
     const [activePage, setActivePage] = useState(1);
-    const [disabled, setDisabled] = useState(false);
     console.log(activePage);
 
-    const handlePageChange = (pageNumber) => {
-        if(pageNumber < 4){
-            setActivePage(pageNumber);
-        } else {
-            setActivePage(3)
+    const handleAddPageChange = () => {
+
+        if(activePage < maxPageNumber){
+            setActivePage(prevState => prevState + 1);
         }
-        if(pageNumber === 0){
+
+    }
+
+    const handleDecrementPageChange = () => {
+        if(activePage <= maxPageNumber){
+            setActivePage(prevState => prevState - 1);
+        }
+
+        if(activePage <= 1){
             setActivePage(1);
         }
+
     }
 
     return(
@@ -131,10 +136,10 @@ const Resume = (props) => {
                     </MDBCol>
                     <MDBCol lg={`1`} className={`text-center align-self-center d-sm-flex justify-content-sm-center d-flex justify-content-center`}>
                         <MDBPaginationLink aria-label='Previous' style={{cursor: `pointer`}}>
-                            <span onClick={() => handlePageChange(activePage - 1)} aria-hidden='true'><i className="fas fa-chevron-left fa-2x"></i></span>
+                            <span onClick={handleDecrementPageChange} aria-hidden='true'><i className="fas fa-chevron-left fa-2x"></i></span>
                         </MDBPaginationLink>
                         <MDBPaginationLink aria-label='Previous' className={`d-lg-none`} style={{cursor: `pointer`}}>
-                            <span onClick={() => handlePageChange(activePage + 1)} aria-hidden='true'><i className="fas fa-chevron-right fa-2x"></i></span>
+                            <span onClick={handleAddPageChange} aria-hidden='true'><i className="fas fa-chevron-right fa-2x"></i></span>
                         </MDBPaginationLink>
                     </MDBCol>
                     <MDBCol lg={`7`}>
@@ -306,7 +311,7 @@ const Resume = (props) => {
                     </MDBCol>
                     <MDBCol lg={`1`} className={`text-center align-self-center d-none d-sm-none d-md-none d-lg-block`}>
                         <MDBPaginationLink href='#' aria-label='Previous'>
-                            <span onClick={() => handlePageChange(activePage + 1)} aria-hidden='true'><i className="fas fa-chevron-right fa-2x"></i></span>
+                            <span onClick={handleAddPageChange} aria-hidden='true'><i className="fas fa-chevron-right fa-2x"></i></span>
                         </MDBPaginationLink>
                     </MDBCol>
                 </MDBRow>
