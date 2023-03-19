@@ -111,6 +111,7 @@ const Resume = () => {
                             <MDBCardBody>
                                 <MDBCardText>
                                     <div className={`d-flex flex-wrap justify-content-around`}>
+                                        <div>GitHub Actions</div>
                                         <div>CI/CD</div>
                                         <div>Docker</div>
                                     </div>
@@ -175,10 +176,11 @@ const Resume = () => {
                                                 <li>Using a combination of different front-end programming languages such as
                                                     HTML, CSS, and JavaScript.
                                                 </li>
-                                                <li>Utilizing Flexbox to make mobile responsive websites.</li>
+                                                <li>Utilizing Flexbox and Bootstrap to make mobile responsive websites.</li>
                                                 <li>Working under the Laravel framework with PHP and MySQL for back-end
                                                     programming.
                                                 </li>
+                                                <li>Working with the Angular framework for front-end development.</li>
                                                 <li>Utilizing Bitbucket to push code under a variety of repositories.</li>
                                                 <li>Creating Controllers, Models, and EventListeners through the php artisan
                                                     command.
