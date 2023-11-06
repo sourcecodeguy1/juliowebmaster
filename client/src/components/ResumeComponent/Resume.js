@@ -170,24 +170,31 @@ const Resume = () => {
                                         </MDBCardText>
                                         <MDBCardText>
                                             <ul>
-                                                <li>Creating landing pages for a variety of different departments for
+                                                <li>
+                                                    Creating landing pages for a variety of different departments for
                                                     marketing, sales, accounting, and etc.
                                                 </li>
-                                                <li>Using a combination of different front-end programming languages such as
+                                                <li>
+                                                    Using a combination of different front-end programming languages such as
                                                     HTML, CSS, and JavaScript.
                                                 </li>
-                                                <li>Utilizing Flexbox and Bootstrap to make mobile responsive websites.</li>
-                                                <li>Working under the Laravel framework with PHP and MySQL for back-end
+                                                <li>
+                                                    Utilizing Flexbox and Bootstrap to make mobile responsive websites.</li>
+                                                <li>
+                                                    Working under the Laravel framework with PHP and MySQL for back-end
                                                     programming.
                                                 </li>
-                                                <li>Working with the Angular framework for front-end development.</li>
                                                 <li>Utilizing Bitbucket to push code under a variety of repositories.</li>
-                                                <li>Creating Controllers, Models, and EventListeners through the php artisan
+                                                <li>
+                                                    Creating Controllers, Models, and EventListeners through the php artisan
                                                     command.
                                                 </li>
-                                                <li>Utilizing Unit testing to make sure code works before pushing to
+                                                <li>
+                                                    Utilizing Unit testing to make sure code works before pushing to
                                                     repository.
                                                 </li>
+                                                <li>Working under the Angular framework to create components for SPA applications.</li>
+                                                <li>Creating database queries to pull aggregated data from MySQL to make charts for front-end display.</li>
                                             </ul>
                                         </MDBCardText>
 
