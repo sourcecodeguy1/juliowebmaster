@@ -13,6 +13,10 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "test:dockerfile": "jest dockerfile.test.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
