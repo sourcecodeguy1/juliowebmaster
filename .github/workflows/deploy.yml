@@ -25,7 +25,7 @@ jobs:
       - name: Check Dockerfile for (Client)
         run: |
           docker build -t my-test-image -f client/Dockerfile client
-          docker run --rm -e PATH="/usr/local/bin:${PATH}" -w /usr/src/app my-test-image sh -c "ls -al && cat $(pwd)/package.json"
+          docker run --rm -e PATH="/usr/local/bin:${PATH}" -w /usr/src/app my-test-image sh -c "ls -al && cat ${PATH}/package.json"
     # Add more debugging commands as needed
 
       - name: Check Dockerfile for (Server)
