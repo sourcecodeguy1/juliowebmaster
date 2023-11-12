@@ -1,4 +1,3 @@
-# Dockerfile in the 'client' directory
 FROM node:16-alpine as build
 
 WORKDIR /usr/src/app
@@ -6,20 +5,12 @@ COPY package*.json ./
 RUN yarn cache clean && yarn --update-checksums
 RUN yarn install
 COPY . .
-
-# Create the 'client/build' directory
-RUN mkdir -p client/build
-
-# Print the contents of the working directory and the build directory
-WORKDIR /usr/src/app/client
-RUN ls -al && ls -al build
-
 RUN yarn && yarn build
 
 # Stage - Production
 FROM nginx:1.17-alpine
-WORKDIR /usr/src/app/client
+WORKDIR /usr/src/app
 EXPOSE 3000
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/src/app/client/build /usr/share/nginx/html
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
