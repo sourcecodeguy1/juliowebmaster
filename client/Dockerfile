@@ -7,7 +7,9 @@ RUN yarn cache clean && yarn --update-checksums
 RUN yarn install
 COPY . .
 
-# Set the working directory explicitly
+# Print the contents of the working directory and the build directory
+RUN ls -al && ls -al /usr/src/app/client/build
+
 WORKDIR /usr/src/app/client
 
 RUN yarn && yarn build
