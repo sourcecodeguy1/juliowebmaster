@@ -5,6 +5,7 @@ COPY package*.json ./
 RUN yarn cache clean && yarn --update-checksums
 RUN yarn install
 COPY . .
+RUN ls -al  # Add this line to print the contents of the working directory for debugging
 RUN yarn && yarn build
 
 # Stage - Production
