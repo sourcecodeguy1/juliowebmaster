@@ -1,25 +1,17 @@
-// dockerfile.test.js
+# Use an official Node runtime as a parent image
+FROM node:16.14.0
 
-const { execSync } = require('child_process');
-const path = require('path');
+# Set the working directory in the container
+WORKDIR /usr/src/app
 
-test('Dockerfile content, and package installation match snapshot', () => {
-    const dockerfilePath = path.join(__dirname, '../Dockerfile'); // Update the path as needed
+# Copy package.json and yarn.lock files
+COPY package.json yarn.lock ./
 
-    try {
-        // Build the Docker image from the Dockerfile
-        execSync(`docker build -t my-test-image -f ${dockerfilePath} .`, { stdio: 'inherit' });
+# Install dependencies
+RUN yarn install --frozen-lockfile
 
-        // Run a container using the built image
-        execSync('docker run -d --name my-test-container my-test-image', { stdio: 'inherit' });
+# Copy the rest of the client's source code
+COPY . .
 
-    } catch (error) {
-        console.error('Error during Docker image build and package installation:', error);
-        throw error; // Re-throw the error to fail the test
-    } finally {
-        // Clean up the container and image
-        execSync('docker stop my-test-container', { stdio: 'inherit' });
-        execSync('docker rm my-test-container', { stdio: 'inherit' });
-        execSync('docker rmi my-test-image', { stdio: 'inherit' });
-    }
-});
+# Run any tests
+CMD ["yarn", "test"]
