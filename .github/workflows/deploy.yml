@@ -26,6 +26,10 @@ jobs:
         run: |
           docker build -t client-test-image -f client/dockerfile-tests/Dockerfile.test client
 
+      - name: Build Docker Test Image for Server
+        run: |
+          docker build -t server-test-image -f server/dockerfile-tests/Dockerfile.test server
+
   push-image-to-docker-hub:
     needs: test
     runs-on: ubuntu-latest
