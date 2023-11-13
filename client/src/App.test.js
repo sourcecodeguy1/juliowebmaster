@@ -1,18 +1,44 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import userEvent from "@testing-library/user-event";
 
-test('renders learn react link', () => {
- /* render(<App />);
-  const linkElement = screen.getByText(/HELLO I'M JULIO/i, {selector: 'div'});
-  expect(linkElement).toBeInTheDocument();*/
-  const getByTextContent = (text) => {
-    // Passing function to `getByText`
-    return screen.getByText((content, element) => {
-      const hasText = element => element.textContent === text
-      const elementHasText = hasText(element)
-      // eslint-disable-next-line testing-library/no-node-access
-      const childrenDontHaveText = Array.from(element?.children || []).every(child => !hasText(child))
-      return elementHasText && childrenDontHaveText
-    })
-  }
+test('renders home route', () => {
+    render(<App />);
+    expect(screen.getByText('Home')).toBeInTheDocument();
 });
+
+test('renders resume route', () => {
+    render(<App />);
+    expect(screen.getByText('Resume')).toBeInTheDocument();
+});
+
+test('renders contact route', () => {
+    render(<App />);
+    expect(screen.getByText('Contact')).toBeInTheDocument();
+});
+
+test('navigates to home route', () => {
+    render(<App />);
+
+    userEvent.click(screen.getByText('Home'));
+
+    expect(screen.getByText('Home')).toBeInTheDocument();
+});
+test('navigates to resume route', () => {
+    render(<App />);
+
+    userEvent.click(screen.getByText('Resume'));
+
+    expect(screen.getByText('Resume')).toBeInTheDocument();
+});
+test('navigates to contact route', () => {
+    render(<App />);
+
+    userEvent.click(screen.getByText('Contact'));
+
+    expect(screen.getByText('Contact')).toBeInTheDocument();
+});
+
+
+
+

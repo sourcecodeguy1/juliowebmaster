@@ -77,26 +77,28 @@ const SemanticContact = (props) => {
         });
     };
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
 
-        setForm({submitted: true});
+        setForm({ submitted: true });
 
-        axios.post('/api/send-email', {
-           firstName: input.firstname,
-           email: input.email,
-           message: input.message,
-        }
+        try {
+            const result = await axios.post('/api/send-email', {
+                firstName: input.firstname,
+                email: input.email,
+                message: input.message,
+            });
 
-        ).then((result) => {
-            if(result.data.success === "OK"){
-                setForm({submitted: false, success: true});
-                setInput({firstname: "", email: "", message: ""});
+            if (result.data.success === 'OK') {
+                setForm({ submitted: false, success: true });
+                setInput({ firstname: '', email: '', message: '' });
             } else {
-                setForm({submitted: false, error: true});
+                setForm({ submitted: false, error: true });
             }
-        });
-
+        } catch (error) {
+            console.error('API request failed:', error);
+            setForm({ submitted: false, error: true });
+        }
     };
 
     return(
@@ -114,21 +116,21 @@ const SemanticContact = (props) => {
             <MDBRow className={`mt-5`}>
                 <MDBCol lg={`3`}></MDBCol>
                 <MDBCol sm={`12`} lg={`6`}>
-                    <MDBInput className={error.firstname !== "" ? "is-invalid" : ""} label='First name' id={`first-name`} name={`firstname`} type='text' value={input.firstname} onChange={handleInputChange} required />
+                    <MDBInput className={error.firstname !== "" ? "is-invalid" : ""} label='First name' data-testid={`first-name`} id={`first-name`} name={`firstname`} type='text' value={input.firstname} onChange={handleInputChange} required />
                     <div className={`error`} style={error.firstname !== "" ? {color: `#f93151`, position: `absolute`, marginTop: `-0.75rem`} : {display: `none`}}>{error.firstname}</div>
                 </MDBCol>
             </MDBRow>
             <MDBRow className={`mt-5`}>
                 <MDBCol lg={`3`}></MDBCol>
                 <MDBCol sm={`12`} lg={`6`}>
-                    <MDBInput className={error.email !== "" ? "is-invalid" : ""} label='Email' id='email' name={`email`} type='text' value={input.email} onChange={handleInputChange} />
+                    <MDBInput className={error.email !== "" ? "is-invalid" : ""} label='Email' data-testid={`email`} id='email' name={`email`} type='text' value={input.email} onChange={handleInputChange} />
                     <div className={`error`} style={error.email !== "" ? {color: `#f93151`, position: `absolute`, marginTop: `-0.75rem`} : {display: `none`}}>{error.email}</div>
                 </MDBCol>
             </MDBRow>
             <MDBRow className={`mt-5`}>
                 <MDBCol lg={`3`}></MDBCol>
                 <MDBCol sm={`12`} lg={`6`}>
-                    <MDBTextArea className={error.message !== "" ? "is-invalid" : ""} label='Message' id='message' name={`message`} value={input.message} onChange={handleInputChange} rows={4} />
+                    <MDBTextArea className={error.message !== "" ? "is-invalid" : ""} label='Message' data-testid={`message`} id='message' name={`message`} value={input.message} onChange={handleInputChange} rows={4} />
                     <div className={`error`} style={error.message !== "" ? {color: `#f93151`, position: `absolute`, marginTop: `-0.75rem`} : {display: `none`}}>{error.message}</div>
                 </MDBCol>
             </MDBRow>
@@ -148,7 +150,7 @@ const SemanticContact = (props) => {
                 form.success === true
                     ?<MDBRow className={`mt-3`}>
                         <MDBCol lg={`3`}></MDBCol>
-                        <MDBCol lg={`6`}><div className={`message-success`}>Message Sent!</div></MDBCol>
+                        <MDBCol lg={`6`}><div className={`message-success`} data-testid="success-message">Message Sent!</div></MDBCol>
                     </MDBRow>
                     :
                     form.error === true
