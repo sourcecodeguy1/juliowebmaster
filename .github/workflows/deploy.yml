@@ -24,7 +24,7 @@ jobs:
 
       - name: Build Docker Test Image for Client
         run: |
-          docker build -t client-test-image -f client/deploy-dockerfile-tests/Dockerfile.test client
+          docker build -t client-test-image -f client/src/deploy-dockerfile-tests/Dockerfile.test client
 
       - name: Build Docker Test Image for Server
         run: |
