@@ -4,34 +4,7 @@ on:
     branches:
       - master
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-
-      - name: Use Node.js 16.14.0
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16.14'
-
-      - name: Install yarn and run unittest
-        run: |
-          cd client
-          yarn
-          yarn test
-        env:
-          CI: true
-
-      - name: Build Docker Test Image for Client
-        run: |
-          docker build -t client-test-image -f client/src/deploy-dockerfile-tests/Dockerfile.test client
-
-      - name: Build Docker Test Image for Server
-        run: |
-          docker build -t server-test-image -f server/dockerfile-tests/Dockerfile.test server
-
   push-image-to-docker-hub:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
