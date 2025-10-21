@@ -6,25 +6,32 @@ on:
 jobs:
   push-image-to-docker-hub:
     runs-on: ubuntu-latest
+    outputs:
+      app_version: ${{ steps.version.outputs.app_version }}
+
     steps:
       - uses: actions/checkout@v2
 
       - name: Set APP_VERSION (CalVer-SHA, Docker-safe)
-        run: echo "APP_VERSION=$(date +'%Y.%m.%d')-${GITHUB_SHA::7}" >> $GITHUB_ENV
+        id: version
+        run: echo "app_version=$(date +'%Y.%m.%d')-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      #- name: Set up Docker Buildx
-      #  uses: docker/setup-buildx-action@v1
+
       - name: Build and Push Client
         uses: docker/build-push-action@v2
         with:
           context: ./client
           file: ./client/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:prod
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:${{ steps.version.outputs.app_version }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
+
       - name: Build and Push Node JS Server
         uses: docker/build-push-action@v2
         with:
@@ -32,9 +39,9 @@ jobs:
           file: ./server/Dockerfile
           push: true
           build-args: |
-            APP_VERSION=${{ env.APP_VERSION }}
+            APP_VERSION=${{ steps.version.outputs.app_version }}
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SERVER_DOCKER_REPO }}:${{ env.APP_VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SERVER_DOCKER_REPO }}:${{ steps.version.outputs.app_version }}
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SERVER_DOCKER_REPO }}:latest
 
   deploy:
@@ -49,6 +56,15 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script_stop: true
           script: |
-              cd ${{ secrets.DIRECTORY }}
-              docker-compose down
-              docker-compose pull && docker-compose up --build -d
+            cd ${{ secrets.DIRECTORY }}
+            export CLIENT_TAG='${{ needs.push-image-to-docker-hub.outputs.app_version }}'
+            export SERVER_TAG='${{ needs.push-image-to-docker-hub.outputs.app_version }}'
+
+            echo "Pulling versioned Docker images for juliowebmaster..."
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:${CLIENT_TAG}
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SERVER_DOCKER_REPO }}:${SERVER_TAG}
+
+            echo "Restarting juliowebmaster services (client & api only)..."
+            docker-compose up -d client api
+
+            echo "Deployment completed! ✅"
