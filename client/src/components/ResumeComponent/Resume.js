@@ -157,7 +157,7 @@ const Resume = () => {
                                 </MDBCardTitle>
                                 {activePage === 1 ?
                                     <div>
-                                        <MDBCardText>Web Developer / RateSpecial LLC (Remote)</MDBCardText>
+                                        <MDBCardText>Senior Web Developer / RateSpecial Interactive LLC (Remote)</MDBCardText>
                                         <MDBCardText>
                                             <i className={`fa fa-calendar`}>&nbsp;</i> Jan 2022 -&nbsp;
                                             <span style={{
@@ -171,70 +171,75 @@ const Resume = () => {
                                         <MDBCardText>
                                             <ul>
                                                 <li>
-                                                    Creating landing pages for a variety of different departments for
-                                                    marketing, sales, accounting, and etc.
+                                                    Built and maintain multiple Laravel applications including the main platform, CRM system, checkout system, and various confirmation page sites.
                                                 </li>
                                                 <li>
-                                                    Using a combination of different front-end programming languages such as
-                                                    HTML, CSS, and JavaScript.
+                                                    Architected and shipped a Laravel MCP (Model Context Protocol) server exposing internal XPRR link data to AI agents, enabling automated AFID verification across publisher confirmation pages and catching typo'd or stale links at build time.
                                                 </li>
                                                 <li>
-                                                    Utilizing Flexbox and Bootstrap to make mobile responsive websites.</li>
-                                                <li>
-                                                    Working under the Laravel framework with PHP and MySQL for back-end
-                                                    programming.
-                                                </li>
-                                                <li>Utilizing Bitbucket to push code under a variety of repositories.</li>
-                                                <li>
-                                                    Creating Controllers, Models, and EventListeners through the php artisan
-                                                    command.
+                                                    Bootstrapped an internal Claude plugin registry as the company's foundation for AI-assisted developer workflows.
                                                 </li>
                                                 <li>
-                                                    Utilizing Unit testing to make sure code works before pushing to
-                                                    repository.
+                                                    Integrated third-party APIs including Experian (credit reporting), Active Campaign (email marketing), and payment processors.
                                                 </li>
-                                                <li>Working under the Angular framework to create components for SPA applications.</li>
-                                                <li>Creating database queries to pull aggregated data from MySQL to make charts for front-end display.</li>
+                                                <li>
+                                                    Migrated flagship app from legacy PHP/jQuery to modern Angular and Laravel, improving performance and maintainability.
+                                                </li>
+                                                <li>
+                                                    Created RESTful APIs in Laravel that feed data to an Angular frontend for analytics and reporting.
+                                                </li>
+                                                <li>
+                                                    Optimized PHPUnit test suite from 17 minutes down to 3.5 minutes — a 74% reduction in CI time.
+                                                </li>
+                                                <li>
+                                                    MySQL database work daily: schema design, writing migrations, and query optimization.
+                                                </li>
+                                                <li>
+                                                    Manage automated deployments via Bitbucket CI/CD pipeline; code review gating before anything hits production.
+                                                </li>
+                                                <li>
+                                                    Build responsive landing pages and HTML email templates across multiple departments.
+                                                </li>
                                             </ul>
                                         </MDBCardText>
 
 
-                                    <hr />
-                                    <MDBCardText>
-                                    <MDBCardText>Full-stack PHP Laravel Developer / Merico Inc (Remote)</MDBCardText>
-                                    <MDBCardText>
-                                    <i className={`fa fa-calendar`}>&nbsp;</i> May 2021 - Aug 2021
-                                    </MDBCardText>
-                                    <MDBCardText>
-                                    <ul>
-                                    <li>Utilized the Laravel framework to create, maintain, update their web pages.</li>
-                                    <li>Worked under an agile environment to collaborate with the team to plan and deliver new/existing projects.</li>
-                                    <li>Utilized a combination of front and back-end technologies – HTML, Blade, CSS, JavaScript, Vue, React, PHP, and MySQL.</li>
-                                    <li>Made frequent database calls using Laravel’s ORM/eloquent for selecting, inserting, updating, and deleting data.</li>
-                                    <li>Worked on tasks that needed third party API calls to integrate single sign on social media accounts on their login page.</li>
-                                    <li>Utilized the php artisan command to create controllers, models as well as creating migrations to add or crate entire new database tables and columns.</li>
-                                    <li>Created new branches and made pull requests to GitLab for code review.</li>
-                                    </ul>
-                                    </MDBCardText>
-                                    </MDBCardText>
-                                    <hr />
-                                    <MDBCardText>
-                                    <MDBCardText>Full-stack Software Developer / RMDS Lab (Remote)</MDBCardText>
-                                    <MDBCardText>
-                                    <i className={`fa fa-calendar`}>&nbsp;</i> Sept 2020 - Feb 2021
-                                    </MDBCardText>
-                                    <MDBCardText>
-                                    <ul>
-                                    <li>Worked under the Drupal 8 & 9 CMS environment.</li>
-                                    <li>Translated design mockups provided by UX/UI coordinator to HTML, CSS, JavaScript, jQuery, Ajax, and Bootstrap.</li>
-                                    <li>Back-end technologies – PHP and MySQL using Drupal syntax.</li>
-                                    <li>Used the Drupal Database API syntax to manipulate database data. For example, making CRUD calls.</li>
-                                    <li>Created numerous of Drupal modules to complete given task.</li>
-                                    <li>Worked on their development server to test the web app before pushing it to their production server.</li>
-                                    <li>Constantly updated company web pages in Drupal modules written by other programmers.</li>
-                                    </ul>
-                                    </MDBCardText>
-                                    </MDBCardText>
+                                        <hr />
+                                        <MDBCardText>
+                                            <MDBCardText>Full-stack PHP Laravel Developer / Merico Inc (Remote)</MDBCardText>
+                                            <MDBCardText>
+                                                <i className={`fa fa-calendar`}>&nbsp;</i> May 2021 - Aug 2021
+                                            </MDBCardText>
+                                            <MDBCardText>
+                                                <ul>
+                                                    <li>Utilized the Laravel framework to create, maintain, update their web pages.</li>
+                                                    <li>Worked under an agile environment to collaborate with the team to plan and deliver new/existing projects.</li>
+                                                    <li>Utilized a combination of front and back-end technologies – HTML, Blade, CSS, JavaScript, Vue, React, PHP, and MySQL.</li>
+                                                    <li>Made frequent database calls using Laravel’s ORM/eloquent for selecting, inserting, updating, and deleting data.</li>
+                                                    <li>Worked on tasks that needed third party API calls to integrate single sign on social media accounts on their login page.</li>
+                                                    <li>Utilized the php artisan command to create controllers, models as well as creating migrations to add or crate entire new database tables and columns.</li>
+                                                    <li>Created new branches and made pull requests to GitLab for code review.</li>
+                                                </ul>
+                                            </MDBCardText>
+                                        </MDBCardText>
+                                        <hr />
+                                        <MDBCardText>
+                                            <MDBCardText>Full-stack Software Developer / RMDS Lab (Remote)</MDBCardText>
+                                            <MDBCardText>
+                                                <i className={`fa fa-calendar`}>&nbsp;</i> Sept 2020 - Feb 2021
+                                            </MDBCardText>
+                                            <MDBCardText>
+                                                <ul>
+                                                    <li>Worked under the Drupal 8 & 9 CMS environment.</li>
+                                                    <li>Translated design mockups provided by UX/UI coordinator to HTML, CSS, JavaScript, jQuery, Ajax, and Bootstrap.</li>
+                                                    <li>Back-end technologies – PHP and MySQL using Drupal syntax.</li>
+                                                    <li>Used the Drupal Database API syntax to manipulate database data. For example, making CRUD calls.</li>
+                                                    <li>Created numerous of Drupal modules to complete given task.</li>
+                                                    <li>Worked on their development server to test the web app before pushing it to their production server.</li>
+                                                    <li>Constantly updated company web pages in Drupal modules written by other programmers.</li>
+                                                </ul>
+                                            </MDBCardText>
+                                        </MDBCardText>
                                     </div>
                                     : !activePage
                                 }
