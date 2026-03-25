@@ -11,4 +11,5 @@ COPY yarn.lock ./
 COPY ./ ./
 RUN yarn install
 EXPOSE 3001
-CMD ["yarn", "run", "start"]
+EXPOSE 3003
+CMD ["sh", "-c", "node index.cjs & node mcp-http.js"]

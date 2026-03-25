@@ -17,6 +17,7 @@
   "scripts": {
     "start": "node index.cjs",
     "mcp": "node mcp.js",
+    "mcp:http": "node mcp-http.js",
     "test:dockerfile": "jest dockerfile.test.js"
   },
   "devDependencies": {
