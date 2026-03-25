@@ -15,7 +15,7 @@
     "zod": "^3.22.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.cjs",
     "mcp": "node mcp.js",
     "test:dockerfile": "jest dockerfile.test.js"
   },
