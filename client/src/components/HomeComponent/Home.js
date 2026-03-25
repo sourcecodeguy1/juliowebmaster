@@ -91,6 +91,37 @@ const Home = (props) => {
                             </MDBCardFooter>
                         </MDBCard>
                     </MDBCol>
+                    <MDBCol lg={`6`}>
+                        <MDBCard className='h-100'>
+                            <MDBCardImage
+                                src='/project-images/crm.png'
+                                alt='...'
+                                position='top'
+                            />
+                            <MDBCardBody>
+                                <MDBCardTitle><strong>CRM Portfolio</strong></MDBCardTitle>
+                                <MDBCardText>
+                                    A full-stack CRM application with authentication, user registration, and a dashboard.
+                                    Built with an Angular frontend and a Laravel REST API backend.
+                                </MDBCardText>
+                                <MDBCardText>
+                                    <MDBCardTitle><strong>Tech Stack</strong></MDBCardTitle>
+                                </MDBCardText>
+                                <MDBCardText>
+                                    <ul>
+                                        <li>Angular frontend with component-based architecture</li>
+                                        <li>Laravel REST API backend with MySQL database</li>
+                                        <li>Utilized Docker to containerize the application</li>
+                                        <li>Setup CI/CD pipeline using Github Actions</li>
+                                    </ul>
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <MDBCardFooter className={`d-flex justify-content-between`}>
+                                <a href={`https://crm-client.juliowebmaster.com/login`} target={`_blank`} className={`btn btn-primary`}>Visit Site</a>
+                                <a href={`https://github.com/sourcecodeguy1/crm-portfolio`} target={`_blank`} className={`btn btn-dark`}>GitHub</a>
+                            </MDBCardFooter>
+                        </MDBCard>
+                    </MDBCol>
                 </MDBRow>
             </MDBContainer>
         </div>

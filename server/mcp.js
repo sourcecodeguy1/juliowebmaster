@@ -26,6 +26,14 @@ const projects = [
         live: "https://jobs.juliowebmaster.com/",
         repo: "https://github.com/sourcecodeguy1/jobs-listing",
     },
+    {
+        name: "CRM Portfolio",
+        description:
+            "A full-stack CRM application with authentication, user registration, and a dashboard. Built with an Angular frontend and a Laravel REST API backend, containerized with Docker and deployed to a VPS.",
+        tech: ["Angular", "Laravel", "MySQL", "Docker", "GitHub Actions", "Nginx"],
+        live: "https://crm-client.juliowebmaster.com/login",
+        repo: "https://github.com/sourcecodeguy1/crm-portfolio",
+    },
 ];
 
 const skills = {
