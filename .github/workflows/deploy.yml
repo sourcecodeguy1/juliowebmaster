@@ -64,7 +64,10 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:${CLIENT_TAG}
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SERVER_DOCKER_REPO }}:${SERVER_TAG}
 
+            echo "Removing any stale containers..."
+            docker rm -f client_container server_container 2>/dev/null || true
+
             echo "Restarting juliowebmaster services (client & api only)..."
-            CLIENT_TAG=${CLIENT_TAG} SERVER_TAG=${SERVER_TAG} docker-compose up -d client api
+            CLIENT_TAG=${CLIENT_TAG} SERVER_TAG=${SERVER_TAG} docker compose up -d --force-recreate client api
 
             echo "Deployment completed! ✅"
