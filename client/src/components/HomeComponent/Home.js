@@ -122,6 +122,37 @@ const Home = (props) => {
                             </MDBCardFooter>
                         </MDBCard>
                     </MDBCol>
+                    <MDBCol lg={`6`}>
+                        <MDBCard className='h-100'>
+                            <MDBCardImage
+                                src='/project-images/stripe-api.png'
+                                alt='...'
+                                position='top'
+                            />
+                            <MDBCardBody>
+                                <MDBCardTitle><strong>Stripe Payment Demo</strong></MDBCardTitle>
+                                <MDBCardText>
+                                    A full-stack payment integration demo featuring a React pricing page and a Laravel API
+                                    backend powered by Stripe. Supports PaymentIntents and webhook event handling.
+                                </MDBCardText>
+                                <MDBCardText>
+                                    <MDBCardTitle><strong>Tech Stack</strong></MDBCardTitle>
+                                </MDBCardText>
+                                <MDBCardText>
+                                    <ul>
+                                        <li>React frontend with TailwindCSS and Stripe.js</li>
+                                        <li>Laravel REST API backend with Stripe PHP SDK</li>
+                                        <li>Utilized Docker to containerize the application</li>
+                                        <li>Setup CI/CD pipeline using Github Actions</li>
+                                    </ul>
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <MDBCardFooter className={`d-flex justify-content-between`}>
+                                <a href={`https://stripe.juliowebmaster.com/`} target={`_blank`} className={`btn btn-primary`}>Visit Site</a>
+                                <a href={`https://github.com/sourcecodeguy1/stripe-payment-demo`} target={`_blank`} className={`btn btn-dark`}>GitHub</a>
+                            </MDBCardFooter>
+                        </MDBCard>
+                    </MDBCol>
                 </MDBRow>
             </MDBContainer>
         </div>
