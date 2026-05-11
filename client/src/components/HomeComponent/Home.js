@@ -153,6 +153,38 @@ const Home = (props) => {
                             </MDBCardFooter>
                         </MDBCard>
                     </MDBCol>
+                    <MDBCol lg={`6`}>
+                        <MDBCard className='h-100'>
+                            <MDBCardImage
+                                src='/project-images/analytics-saas.png'
+                                alt='...'
+                                position='top'
+                            />
+                            <MDBCardBody>
+                                <MDBCardTitle><strong>Analytics SaaS</strong></MDBCardTitle>
+                                <MDBCardText>
+                                    A full-stack SaaS analytics platform with subscription billing powered by Stripe.
+                                    Features user authentication, Pro/Free tier management, and webhook-driven subscription lifecycle.
+                                </MDBCardText>
+                                <MDBCardText>
+                                    <MDBCardTitle><strong>Tech Stack</strong></MDBCardTitle>
+                                </MDBCardText>
+                                <MDBCardText>
+                                    <ul>
+                                        <li>React frontend with Vite, TailwindCSS, and shadcn/ui</li>
+                                        <li>Laravel REST API backend with Sanctum authentication</li>
+                                        <li>Stripe subscription integration with webhook handling</li>
+                                        <li>Utilized Docker to containerize the application</li>
+                                        <li>Setup CI/CD pipeline using Github Actions</li>
+                                    </ul>
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <MDBCardFooter className={`d-flex justify-content-between`}>
+                                <a href={`https://analytics.juliowebmaster.com/`} target={`_blank`} className={`btn btn-primary`}>Visit Site</a>
+                                <a href={`https://github.com/sourcecodeguy1/analytics-saas`} target={`_blank`} className={`btn btn-dark`}>GitHub</a>
+                            </MDBCardFooter>
+                        </MDBCard>
+                    </MDBCol>
                 </MDBRow>
             </MDBContainer>
         </div>
