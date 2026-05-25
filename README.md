@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# juliowebmaster.com
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio website for Julio Sandoval — Senior Full-Stack Developer.
 
-## Available Scripts
+Live at **[juliowebmaster.com](https://juliowebmaster.com)**
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Client
+- React 18 (Create React App)
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- Axios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Server
+- Node.js + Express + TypeScript
+- Groq SDK (`llama-3.3-70b-versatile`) — AI chat assistant with tool use
+- Nodemailer — contact form email delivery
 
-### `npm test`
+### Infrastructure
+- Docker (multi-stage builds)
+- Nginx (static file serving)
+- Traefik (reverse proxy + SSL)
+- GitHub Actions (CI/CD — build, push to Docker Hub, deploy to Vultr)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+juliowebmaster/
+├── client/          # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── NavbarComponent/
+│   │   │   ├── HomeComponent/      # Hero + project cards
+│   │   │   ├── ResumeComponent/    # Timeline + skills sidebar
+│   │   │   ├── ContactComponent/   # Contact form
+│   │   │   └── ChatWidget/         # AI chat assistant
+│   │   └── index.js
+│   ├── Dockerfile
+│   └── tailwind.config.js
+└── server/          # Express API
+    ├── src/
+    │   ├── index.ts         # Express app, /api/chat + /api/send-email
+    │   ├── tools.ts         # Groq tool definitions
+    │   └── portfolio-data.ts
+    └── Dockerfile
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Local Development
 
-### `npm run eject`
+### Client
+```bash
+cd client
+npm install
+npm start       # http://localhost:3000
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Server
+```bash
+cd server
+cp .env.example .env   # fill in GROQ_API_KEY, mail credentials
+npm install
+npm run dev     # http://localhost:3002
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## CI/CD
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Pushing to `master` triggers GitHub Actions:
+1. Builds and pushes Docker images to Docker Hub
+2. SSHs into the Vultr server and force-recreates both containers
 
-## Learn More
+Secrets required: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`, `DOCKER_REPO`, `DOCKER_REPO_SERVER`, `HOST`, `SERVER_USERNAME`, `SERVER_SSH_KEY`, `DIRECTORY`, `DIRECTORY_SERVER`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Features
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **AI Chat Widget** — floating assistant powered by Groq (Llama 3.3 70B) with MCP-style tool use to answer questions about skills, experience, and projects
+- **Contact Form** — sends email via Nodemailer/Mailtrap
+- **Dark Theme** — Tailwind CSS with indigo/cyan accent palette
+- **Animated Hero** — Framer Motion entrance animations
+- **Resume Timeline** — full work history without pagination
