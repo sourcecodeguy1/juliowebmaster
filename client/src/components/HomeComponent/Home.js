@@ -139,7 +139,7 @@ const Home = () => (
           animate={{ opacity: 1 }}
           transition={{ delay: 0.45, duration: 0.5 }}
         >
-          Building modern web experiences with React, Laravel, and Node.js.
+          Building modern web experiences with React, Angular, Laravel, and Node.js.
           Currently shipping AI-powered tools at RateSpecial Interactive.
         </motion.p>
 
