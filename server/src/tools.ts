@@ -1,4 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
+import Groq from 'groq-sdk';
 import { portfolioData } from './portfolio-data';
 
 export type ToolName =
@@ -9,36 +9,54 @@ export type ToolName =
   | 'get_contact_info'
   | 'get_education';
 
-export const tools: Anthropic.Tool[] = [
+export const tools: Groq.Chat.ChatCompletionTool[] = [
   {
-    name: 'get_about',
-    description: "Get Julio's professional bio and summary",
-    input_schema: { type: 'object', properties: {}, required: [] },
+    type: 'function',
+    function: {
+      name: 'get_about',
+      description: "Get Julio's professional bio and summary",
+      parameters: { type: 'object', properties: {}, required: [] },
+    },
   },
   {
-    name: 'get_projects',
-    description: "Get the list of Julio's portfolio projects with tech stack and links",
-    input_schema: { type: 'object', properties: {}, required: [] },
+    type: 'function',
+    function: {
+      name: 'get_projects',
+      description: "Get the list of Julio's portfolio projects with tech stack and links",
+      parameters: { type: 'object', properties: {}, required: [] },
+    },
   },
   {
-    name: 'get_skills',
-    description: "Get Julio's technical skills organized by category (frontend, backend, devops, AI, etc.)",
-    input_schema: { type: 'object', properties: {}, required: [] },
+    type: 'function',
+    function: {
+      name: 'get_skills',
+      description: "Get Julio's technical skills organized by category (frontend, backend, devops, AI, etc.)",
+      parameters: { type: 'object', properties: {}, required: [] },
+    },
   },
   {
-    name: 'get_experience',
-    description: "Get Julio's full work experience history",
-    input_schema: { type: 'object', properties: {}, required: [] },
+    type: 'function',
+    function: {
+      name: 'get_experience',
+      description: "Get Julio's full work experience history",
+      parameters: { type: 'object', properties: {}, required: [] },
+    },
   },
   {
-    name: 'get_contact_info',
-    description: "Get Julio's contact information, email, GitHub, and LinkedIn",
-    input_schema: { type: 'object', properties: {}, required: [] },
+    type: 'function',
+    function: {
+      name: 'get_contact_info',
+      description: "Get Julio's contact information, email, GitHub, and LinkedIn",
+      parameters: { type: 'object', properties: {}, required: [] },
+    },
   },
   {
-    name: 'get_education',
-    description: "Get Julio's educational background and degrees",
-    input_schema: { type: 'object', properties: {}, required: [] },
+    type: 'function',
+    function: {
+      name: 'get_education',
+      description: "Get Julio's educational background and degrees",
+      parameters: { type: 'object', properties: {}, required: [] },
+    },
   },
 ];
 

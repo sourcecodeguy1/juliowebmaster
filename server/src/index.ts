@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import Anthropic from '@anthropic-ai/sdk';
+import Groq from 'groq-sdk';
 import nodemailer from 'nodemailer';
 import { tools, executeTool, ToolName } from './tools';
 
@@ -15,8 +15,8 @@ app.use(cors({
 }));
 app.use(express.json());
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 const SYSTEM_PROMPT = `You are an AI assistant on Julio Sandoval's portfolio website. Your role is to help visitors learn about Julio's skills, experience, and projects in a friendly, conversational way.
@@ -43,47 +43,43 @@ app.post('/api/chat', async (req, res) => {
   }
 
   try {
-    const messages: Anthropic.MessageParam[] = [
+    const messages: Groq.Chat.ChatCompletionMessageParam[] = [
       ...history.map(m => ({ role: m.role, content: m.content })),
       { role: 'user' as const, content: message },
     ];
 
-    let response = await anthropic.messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 1024,
-      system: SYSTEM_PROMPT,
-      tools,
+    let response = await groq.chat.completions.create({
+      model: 'llama-3.3-70b-versatile',
       messages,
+      tools,
+      tool_choice: 'auto',
     });
 
-    // Agentic loop — keep going until Claude stops using tools
-    while (response.stop_reason === 'tool_use') {
-      const toolUseBlocks = response.content.filter(b => b.type === 'tool_use');
+    // Agentic loop — keep going until the model stops calling tools
+    while (response.choices[0].finish_reason === 'tool_calls') {
+      const assistantMessage = response.choices[0].message;
+      const toolCalls = assistantMessage.tool_calls!;
 
-      const toolResults: Anthropic.ToolResultBlockParam[] = toolUseBlocks.map(block => {
-        if (block.type !== 'tool_use') return null!;
-        return {
-          type: 'tool_result' as const,
-          tool_use_id: block.id,
-          content: executeTool(block.name as ToolName),
-        };
-      });
+      messages.push(assistantMessage);
 
-      messages.push({ role: 'assistant', content: response.content });
-      messages.push({ role: 'user', content: toolResults });
+      for (const toolCall of toolCalls) {
+        const result = executeTool(toolCall.function.name as ToolName);
+        messages.push({
+          role: 'tool',
+          tool_call_id: toolCall.id,
+          content: result,
+        });
+      }
 
-      response = await anthropic.messages.create({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        tools,
+      response = await groq.chat.completions.create({
+        model: 'llama-3.3-70b-versatile',
         messages,
+        tools,
+        tool_choice: 'auto',
       });
     }
 
-    const textBlock = response.content.find(b => b.type === 'text');
-    const text = textBlock?.type === 'text' ? textBlock.text : '';
-
+    const text = response.choices[0].message.content || '';
     res.json({ response: text });
   } catch (error) {
     console.error('Chat error:', error);
