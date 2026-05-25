@@ -1,167 +1,165 @@
-import React, {useEffect, useState} from 'react';
-import '../../App.css';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import axios from 'axios';
 
-import {
-    MDBBtn,
-    MDBCol,
-    MDBContainer,
-    MDBInput,
-    MDBRow,
-    MDBTextArea,
-    MDBSpinner
-} from 'mdb-react-ui-kit';
-import validator from 'validator';
-import axios from "axios";
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-const SemanticContact = (props) => {
+const SemanticContact = () => {
+  const [input, setInput] = useState({ firstname: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState({ loading: false, success: false, error: false });
 
-    const [input, setInput] = useState({
-        firstname: "",
-        email: "",
-        message: "",
-    });
+  const validate = (name, value) => {
+    if (name === 'firstname' && !value) return 'Please enter your first name.';
+    if (name === 'email') {
+      if (!value) return 'Please enter your email.';
+      if (!isValidEmail(value)) return 'Please enter a valid email address.';
+    }
+    if (name === 'message' && !value) return 'Please enter your message.';
+    return '';
+  };
 
-    const [error, setError] = useState({
-        firstname: "",
-        email: "",
-        message: "",
-    });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: validate(name, value) }));
+  };
 
-    const [form, setForm] = useState({
-        success: false,
-        error: false,
-        submitted: false
-    });
+  const isValid =
+    input.firstname.trim() &&
+    input.message.trim() &&
+    isValidEmail(input.email);
 
-    useEffect(() => {
-        console.log(error.firstname);
-    },[error.firstname]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isValid) return;
+    setForm({ loading: true, success: false, error: false });
+    try {
+      const { data } = await axios.post('/api/send-email', {
+        firstName: input.firstname,
+        email: input.email,
+        message: input.message,
+      });
+      if (data.success === 'OK') {
+        setForm({ loading: false, success: true, error: false });
+        setInput({ firstname: '', email: '', message: '' });
+      } else {
+        setForm({ loading: false, success: false, error: true });
+      }
+    } catch {
+      setForm({ loading: false, success: false, error: true });
+    }
+  };
 
-    const handleInputChange = (e: any) => {
+  const fieldClass = (field) =>
+    `w-full bg-[#111118] border ${
+      errors[field] ? 'border-red-500/40 focus:border-red-500/60' : 'border-white/5 focus:border-indigo-500/50'
+    } rounded-xl px-4 py-3 text-slate-100 text-sm placeholder-slate-700 outline-none focus:ring-1 focus:ring-indigo-500/20 transition-all`;
 
-        setInput({ ...input, [e.target.name]: e.target.value });
+  return (
+    <div className="bg-[#0a0a0f] min-h-screen pt-24 pb-20 px-6">
+      <div className="max-w-xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl font-bold text-slate-100 mb-2">Get In Touch</h1>
+          <p className="text-slate-500 text-sm mb-10">
+            Need help building or maintaining a website? I'd love to hear about your project.
+          </p>
 
-        handleValidateInput(e);
-    };
+          <form
+            onSubmit={handleSubmit}
+            className="bg-[#16161e] border border-white/5 rounded-2xl p-8 space-y-6"
+          >
+            <div>
+              <label className="block text-xs font-medium text-slate-500 uppercase tracking-widest mb-2">
+                First Name
+              </label>
+              <input
+                type="text"
+                name="firstname"
+                value={input.firstname}
+                onChange={handleChange}
+                placeholder="Your first name"
+                className={fieldClass('firstname')}
+                data-testid="first-name"
+              />
+              {errors.firstname && (
+                <p className="mt-1.5 text-xs text-red-400">{errors.firstname}</p>
+              )}
+            </div>
 
-    const handleValidateInput = (e) => {
-        let { name, value } = e.target;
-        setError(prev => {
-            const stateObj = {...prev, [name]: ""};
+            <div>
+              <label className="block text-xs font-medium text-slate-500 uppercase tracking-widest mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={input.email}
+                onChange={handleChange}
+                placeholder="your@email.com"
+                className={fieldClass('email')}
+                data-testid="email"
+              />
+              {errors.email && (
+                <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
+              )}
+            </div>
 
-            switch (name) {
-                case "firstname":
-                    if (!value) {
-                        stateObj[name] = "Please enter your first name.";
-                    }
-                    break;
+            <div>
+              <label className="block text-xs font-medium text-slate-500 uppercase tracking-widest mb-2">
+                Message
+              </label>
+              <textarea
+                name="message"
+                value={input.message}
+                onChange={handleChange}
+                placeholder="Tell me about your project..."
+                rows={5}
+                className={`${fieldClass('message')} resize-none`}
+                data-testid="message"
+              />
+              {errors.message && (
+                <p className="mt-1.5 text-xs text-red-400">{errors.message}</p>
+              )}
+            </div>
 
-                case "email":
-                    if (!value) {
-                        stateObj[name] = "Please enter your email.";
-                    }else if(!validator.isEmail(value)){
-                        stateObj[name] = "Please enter a valid email.";
-                    }
-                    break;
+            <button
+              type="submit"
+              disabled={!isValid || form.loading}
+              className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-xl transition-all shadow-lg shadow-indigo-500/20"
+            >
+              {form.loading ? (
+                <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              ) : (
+                <><Send size={14} /> Send Message</>
+              )}
+            </button>
 
-                case "message":
-                    if (!value) {
-                        stateObj[name] = "Please enter your message.";
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-            return stateObj;
-        });
-    };
-
-    const handleClick = async (e) => {
-        e.preventDefault();
-
-        setForm({ submitted: true });
-
-        try {
-            const result = await axios.post('/api/send-email', {
-                firstName: input.firstname,
-                email: input.email,
-                message: input.message,
-            });
-
-            if (result.data.success === 'OK') {
-                setForm({ submitted: false, success: true });
-                setInput({ firstname: '', email: '', message: '' });
-            } else {
-                setForm({ submitted: false, error: true });
-            }
-        } catch (error) {
-            console.error('API request failed:', error);
-            setForm({ submitted: false, error: true });
-        }
-    };
-
-    return(
-        <MDBContainer>
-            <MDBRow className={`mt-3`}>
-                <MDBCol className={`text-center`}>
-                    <div><h2>Contact Me!</h2></div>
-                </MDBCol>
-            </MDBRow>
-            <MDBRow>
-                <MDBCol className={`text-center`}>
-                    <div><small>If you need help creating, maintaining, or updating your website, send me a message.</small></div>
-                </MDBCol>
-            </MDBRow>
-            <MDBRow className={`mt-5`}>
-                <MDBCol lg={`3`}></MDBCol>
-                <MDBCol sm={`12`} lg={`6`}>
-                    <MDBInput className={error.firstname !== "" ? "is-invalid" : ""} label='First name' data-testid={`first-name`} id={`first-name`} name={`firstname`} type='text' value={input.firstname} onChange={handleInputChange} required />
-                    <div className={`error`} style={error.firstname !== "" ? {color: `#f93151`, position: `absolute`, marginTop: `-0.75rem`} : {display: `none`}}>{error.firstname}</div>
-                </MDBCol>
-            </MDBRow>
-            <MDBRow className={`mt-5`}>
-                <MDBCol lg={`3`}></MDBCol>
-                <MDBCol sm={`12`} lg={`6`}>
-                    <MDBInput className={error.email !== "" ? "is-invalid" : ""} label='Email' data-testid={`email`} id='email' name={`email`} type='text' value={input.email} onChange={handleInputChange} />
-                    <div className={`error`} style={error.email !== "" ? {color: `#f93151`, position: `absolute`, marginTop: `-0.75rem`} : {display: `none`}}>{error.email}</div>
-                </MDBCol>
-            </MDBRow>
-            <MDBRow className={`mt-5`}>
-                <MDBCol lg={`3`}></MDBCol>
-                <MDBCol sm={`12`} lg={`6`}>
-                    <MDBTextArea className={error.message !== "" ? "is-invalid" : ""} label='Message' data-testid={`message`} id='message' name={`message`} value={input.message} onChange={handleInputChange} rows={4} />
-                    <div className={`error`} style={error.message !== "" ? {color: `#f93151`, position: `absolute`, marginTop: `-0.75rem`} : {display: `none`}}>{error.message}</div>
-                </MDBCol>
-            </MDBRow>
-            <MDBRow className={`mt-3`}>
-                <MDBCol lg={`3`}></MDBCol>
-                <MDBCol sm={`12`} lg={`6`}>
-                    <MDBBtn className={input.firstname === "" || input.email === "" || !validator.isEmail(input.email) || input.message === "" ? "disabled" : form.submitted === true ? "disabled" : ""}
-                    onClick={handleClick}
-                    >
-                        {form.submitted === true ? <MDBSpinner size='sm' role='status' tag='span' /> : "Submit"}
-
-                    </MDBBtn>
-                </MDBCol>
-
-            </MDBRow>
-            {
-                form.success === true
-                    ?<MDBRow className={`mt-3`}>
-                        <MDBCol lg={`3`}></MDBCol>
-                        <MDBCol lg={`6`}><div className={`message-success`} data-testid="success-message">Message Sent!</div></MDBCol>
-                    </MDBRow>
-                    :
-                    form.error === true
-                    ?<MDBRow className={`mt-3`}>
-                            <MDBCol lg={`3`}></MDBCol>
-                            <MDBCol lg={`6`}><div className={`message-error`}>Error! Something went wrong. Please try again later.</div></MDBCol>
-                        </MDBRow>
-                    : ""
-            }
-        </MDBContainer>
-    );
-}
+            {form.success && (
+              <div
+                data-testid="success-message"
+                className="flex items-center gap-3 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-400 text-sm"
+              >
+                <CheckCircle size={15} />
+                Message sent! I'll get back to you soon.
+              </div>
+            )}
+            {form.error && (
+              <div className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm">
+                <AlertCircle size={15} />
+                Something went wrong. Please try again later.
+              </div>
+            )}
+          </form>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
 
 export default SemanticContact;

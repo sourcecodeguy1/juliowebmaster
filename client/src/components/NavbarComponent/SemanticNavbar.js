@@ -1,76 +1,83 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
-import {Link} from "react-router-dom";
+const navLinks = [
+  { path: '/', label: 'Home' },
+  { path: '/resume', label: 'Resume' },
+  { path: '/contact', label: 'Contact' },
+];
 
-import {
-    MDBNavbar,
-    MDBContainer,
-    MDBIcon,
-    MDBNavbarNav,
-    MDBNavbarItem,
-    MDBNavbarLink,
-    MDBNavbarToggler,
-    MDBCollapse,
-} from 'mdb-react-ui-kit';
+const SemanticNavbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
-const SemanticNavbar = (props) => {
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-    const [activeItem, setActiveItem] = useState('home');
+  return (
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled
+        ? 'bg-[#0a0a0f]/90 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/20'
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 group">
+          <span className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+            JS
+          </span>
+          <span className="text-slate-400 font-medium text-sm hidden sm:block group-hover:text-slate-200 transition-colors">
+            Julio Sandoval
+          </span>
+        </Link>
 
-    const [showNavCentred, setShowNavCentred] = useState(false);
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map(({ path, label }) => (
+            <Link
+              key={path}
+              to={path}
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === path
+                  ? 'text-indigo-400'
+                  : 'text-slate-500 hover:text-slate-200'
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
 
-    const handleToggleActive = (value) => {
-        setActiveItem(value);
-    }
+        <button
+          className="md:hidden text-slate-400 hover:text-slate-200 transition-colors"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
 
-    useEffect(() => {
-
-    }, [activeItem]);
-
-    return(
-        <>
-            <MDBNavbar expand='lg' light bgColor='light'>
-                <MDBContainer fluid>
-                    <MDBNavbarToggler
-                        type='button'
-                        data-target='#navbarCenteredExample'
-                        aria-controls='navbarCenteredExample'
-                        aria-expanded='false'
-                        aria-label='Toggle navigation'
-                        onClick={() => setShowNavCentred(!showNavCentred)}
-                    >
-                        <MDBIcon icon='bars' fas />
-                    </MDBNavbarToggler>
-
-                    <MDBCollapse navbar show={showNavCentred} center id='navbarCenteredExample' className={`justify-content-center`}>
-                        <MDBNavbarNav fullWidth={false} className='mb-2 mb-lg-0'>
-                            <MDBNavbarItem>
-                                <Link to={`/`}>
-                                    <MDBNavbarLink className={activeItem === 'home' ? "active" : ""} onClick={() => handleToggleActive('home')} aria-current='page'>
-                                        Home
-                                    </MDBNavbarLink>
-                                </Link>
-                            </MDBNavbarItem>
-                            <MDBNavbarItem>
-                                <Link to={`/resume`}>
-                                    <MDBNavbarLink className={activeItem === 'resume' ? "active" : ""} onClick={() => handleToggleActive('resume')}>
-                                        Resume
-                                    </MDBNavbarLink>
-                                </Link>
-                            </MDBNavbarItem>
-                            <MDBNavbarItem>
-                                <Link to={`/contact`}>
-                                    <MDBNavbarLink className={activeItem === 'contact' ? "active" : ""} onClick={() => handleToggleActive('contact')} tabIndex={-1} aria-disabled='true'>
-                                        Contact
-                                    </MDBNavbarLink>
-                                </Link>
-                            </MDBNavbarItem>
-                        </MDBNavbarNav>
-                    </MDBCollapse>
-                </MDBContainer>
-            </MDBNavbar>
-        </>
-    )
+      {menuOpen && (
+        <div className="md:hidden bg-[#111118]/95 backdrop-blur-md border-t border-white/5 px-6 py-4 flex flex-col gap-4">
+          {navLinks.map(({ path, label }) => (
+            <Link
+              key={path}
+              to={path}
+              className={`text-sm font-medium py-1 transition-colors ${
+                location.pathname === path ? 'text-indigo-400' : 'text-slate-400'
+              }`}
+              onClick={() => setMenuOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </nav>
+  );
 };
 
 export default SemanticNavbar;
