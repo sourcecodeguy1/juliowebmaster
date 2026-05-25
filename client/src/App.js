@@ -3,6 +3,7 @@ import React from 'react';
 import Home from "./components/HomeComponent/Home";
 import Resume from "./components/ResumeComponent/Resume";
 import SemanticContact from "./components/ContactComponent/SemanticContact";
+import ChatWidget from "./components/ChatWidget/ChatWidget";
 
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SemanticHeader from "./components/HeaderComponent/SemanticHeader";
@@ -19,6 +20,7 @@ function App() {
             <Route exact path={`/resume`} element={<Resume />} />
             <Route exact path={`/contact`} element={<SemanticContact />} />
         </Routes>
+        <ChatWidget />
     </BrowserRouter>
   );
 }
