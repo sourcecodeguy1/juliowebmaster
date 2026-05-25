@@ -78,8 +78,6 @@ Pushing to `master` triggers GitHub Actions:
 1. Builds and pushes Docker images to Docker Hub
 2. SSHs into the Vultr server and force-recreates both containers
 
-Secrets required: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`, `DOCKER_REPO`, `DOCKER_REPO_SERVER`, `HOST`, `SERVER_USERNAME`, `SERVER_SSH_KEY`, `DIRECTORY`, `DIRECTORY_SERVER`
-
 ---
 
 ## Features
