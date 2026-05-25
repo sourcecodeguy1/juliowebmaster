@@ -125,9 +125,9 @@ const Resume = () => (
                 <MapPin size={13} className="text-indigo-400 flex-shrink-0" />
                 El Monte, CA
               </div>
-              <a href="mailto:sandovaljulio2@yahoo.com" className="flex items-center gap-3 text-sm text-slate-400 hover:text-indigo-400 transition-colors">
+              <a href="mailto:julio.sandoval.engineer@gmail.com" className="flex items-center gap-3 text-sm text-slate-400 hover:text-indigo-400 transition-colors">
                 <Mail size={13} className="text-indigo-400 flex-shrink-0" />
-                sandovaljulio2@yahoo.com
+                julio.sandoval.engineer@gmail.com
               </a>
               <a href="https://github.com/sourcecodeguy1" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-sm text-slate-400 hover:text-indigo-400 transition-colors">
                 <Github size={13} className="text-indigo-400 flex-shrink-0" />
@@ -173,7 +173,16 @@ const Resume = () => (
         </aside>
 
         {/* Work Experience Timeline */}
-        <main className="flex-1 min-w-0">
+        <main className="flex-1 min-w-0 space-y-5">
+          <div className="bg-[#16161e] border border-white/5 rounded-2xl p-8">
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Senior Full Stack Developer with 10+ years of experience building and shipping production web applications.
+              Specializing in PHP/Laravel, React, Angular, and Node.js. Currently at RateSpecial Interactive where I
+              architect AI-powered developer tooling including a Laravel MCP server integrated with Claude AI.
+              I work fully remote and async, owning features end to end from architecture to deployment.
+            </p>
+          </div>
+
           <div className="bg-[#16161e] border border-white/5 rounded-2xl p-8">
             <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-8 flex items-center gap-2">
               <Briefcase size={12} className="text-indigo-400" /> Work Experience
