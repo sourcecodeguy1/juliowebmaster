@@ -130,7 +130,7 @@ const Home = () => (
           animate={{ opacity: 1 }}
           transition={{ delay: 0.35, duration: 0.5 }}
         >
-          Full-Stack Developer
+          Senior Full-Stack Developer
         </motion.p>
 
         <motion.p
