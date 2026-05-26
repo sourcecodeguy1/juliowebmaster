@@ -61,6 +61,7 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
             docker rm -f client_container 2>/dev/null || true
             docker compose up -d --force-recreate portfolio
+            docker images ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }} --format '{{.Tag}}' | grep -v latest | sort -r | tail -n +3 | xargs -r -I {} docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO }}:{}
             docker image prune -f
 
             echo "Deploying server..."
@@ -68,6 +69,7 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO_SERVER }}:latest
             docker rm -f portfolio-server 2>/dev/null || true
             docker compose up -d --force-recreate portfolio-server
+            docker images ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO_SERVER }} --format '{{.Tag}}' | grep -v latest | sort -r | tail -n +3 | xargs -r -I {} docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPO_SERVER }}:{}
             docker image prune -f
 
             echo "Deployment completed! ✅"
