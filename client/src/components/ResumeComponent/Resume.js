@@ -18,7 +18,7 @@ const experiences = [
     period: 'Jan 2022 — Present',
     current: true,
     bullets: [
-      'Built and maintain multiple Laravel applications including the main platform, CRM, checkout system, and confirmation page sites.',
+      'Architect and ship production systems end to end across a distributed network of 6+ independent Laravel applications.',
       'Architected and shipped a Laravel MCP server exposing internal XPRR link data to AI agents, enabling automated AFID verification across publisher confirmation pages.',
       'Bootstrapped an internal Claude plugin registry as the company\'s foundation for AI-assisted developer workflows.',
       'Integrated third-party APIs: Experian (credit reporting), Active Campaign (email marketing), and payment processors.',
