@@ -111,7 +111,7 @@ const Resume = () => (
         className="mb-10"
       >
         <h1 className="text-4xl font-bold text-slate-100 mb-2">Resume</h1>
-        <p className="text-slate-500 text-sm">Full-stack developer with 10+ years of experience</p>
+        <p className="text-slate-500 text-sm">Full-stack developer with 8+ years of experience</p>
       </motion.div>
 
       <div className="flex flex-col lg:flex-row gap-8">
@@ -176,7 +176,7 @@ const Resume = () => (
         <main className="flex-1 min-w-0 space-y-5">
           <div className="bg-[#16161e] border border-white/5 rounded-2xl p-8">
             <p className="text-slate-400 text-sm leading-relaxed">
-              Senior Full Stack Developer with 10+ years of experience building and shipping production web applications.
+              Senior Full Stack Developer with 8+ years of experience building and shipping production web applications.
               Specializing in PHP/Laravel, React, Angular, and Node.js. Currently at RateSpecial Interactive where I
               architect AI-powered developer tooling including a Laravel MCP server integrated with Claude AI.
               I work fully remote and async, owning features end to end from architecture to deployment.
