@@ -69,7 +69,7 @@ export const portfolioData = {
         'Bootstrapped an internal Claude plugin registry as the company foundation for AI-assisted developer workflows.',
         'Integrated Experian (credit reporting), Active Campaign (email marketing), and payment processor APIs.',
         'Migrated flagship app from legacy PHP/jQuery to modern Angular and Laravel.',
-        'Optimized PHPUnit test suite from 17 minutes down to 3.5 minutes — a 74% reduction in CI time.',
+        'Optimized PHPUnit test suite from 17 minutes to 3.5 minutes, a 74% reduction in CI time.',
         'Manage automated deployments via Bitbucket CI/CD with code review gating before production.',
       ],
     },
@@ -146,14 +146,24 @@ export const portfolioData = {
     },
   ],
 
-  education: {
-    school: 'Santa Monica College',
-    location: 'Santa Monica, CA',
-    graduation: 'December 2019',
-    degrees: [
-      'A.S. in Computer Programming',
-      'A.S. in Web Programmer',
-      'A.S. in Database Application Developer',
-    ],
-  },
+  education: [
+    {
+      school: 'Western Governors University',
+      location: 'Salt Lake City, UT',
+      graduation: 'December 2027 (Expected)',
+      degrees: [
+        'B.S. in Software Engineering (In Progress)',
+      ],
+    },
+    {
+      school: 'Santa Monica College',
+      location: 'Santa Monica, CA',
+      graduation: 'December 2019',
+      degrees: [
+        'A.S. in Computer Programming',
+        'A.S. in Web Programmer',
+        'A.S. in Database Application Developer',
+      ],
+    },
+  ],
 };

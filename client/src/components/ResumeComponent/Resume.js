@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Github, Linkedin, Briefcase, GraduationCap, Code2 } from 'lucide-react';
+import { portfolioData } from '../../data/portfolioData';
 
 const skills = {
   'Front-End': ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Bootstrap', 'TailwindCSS'],
@@ -23,7 +24,7 @@ const experiences = [
       'Bootstrap an internal Claude plugin registry as the company\'s foundation for AI-assisted developer workflows.',
       'Integrate third-party APIs: Experian (credit reporting), Active Campaign (email marketing), and payment processors.',
       'Migrate flagship app from legacy PHP/jQuery to modern Angular and Laravel.',
-      'Optimize PHPUnit test suite from 17 minutes to 3.5 minutes — a 74% reduction in CI time.',
+      'Optimize PHPUnit test suite from 17 minutes to 3.5 minutes, a 74% reduction in CI time.',
       'Manage automated deployments via Bitbucket CI/CD with code review gating before production.',
     ],
   },
@@ -162,13 +163,19 @@ const Resume = () => (
             <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
               <GraduationCap size={12} className="text-indigo-400" /> Education
             </h3>
-            <p className="text-sm font-medium text-slate-200 mb-1">Santa Monica College</p>
-            <p className="text-xs text-slate-600 mb-3">Santa Monica, CA · Dec 2019</p>
-            <ul className="space-y-1.5 text-xs text-slate-400">
-              <li>A.S. Computer Programming</li>
-              <li>A.S. Web Programmer</li>
-              <li>A.S. Database Application Developer</li>
-            </ul>
+            <div className="space-y-6">
+              {portfolioData.education.map((edu, i) => (
+                <div key={i}>
+                  <p className="text-sm font-medium text-slate-200 mb-1">{edu.school}</p>
+                  <p className="text-xs text-slate-600 mb-3">{edu.location} · {edu.graduation}</p>
+                  <ul className="space-y-1.5 text-xs text-slate-400">
+                    {edu.degrees.map((degree, j) => (
+                      <li key={j}>{degree}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </aside>
 
