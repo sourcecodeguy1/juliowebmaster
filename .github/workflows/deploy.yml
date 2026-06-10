@@ -77,8 +77,9 @@ jobs:
       - name: Notify Slack on success
         if: success()
         uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           payload: |
             {
               "channel": "#github-deployments",
@@ -97,8 +98,9 @@ jobs:
       - name: Notify Slack on failure
         if: failure()
         uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           payload: |
             {
               "channel": "#github-deployments",
