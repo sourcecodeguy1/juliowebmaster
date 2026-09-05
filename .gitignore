@@ -55,3 +55,9 @@ yarn-error.log*
 # .sh files
 utility-client.sh
 utility-server.sh
+
+# IDE
+.idea/
+
+# resume
+Julio_Sandoval_Resume.pdf

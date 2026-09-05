@@ -4,10 +4,10 @@ import { MapPin, Mail, Github, Linkedin, Briefcase, GraduationCap, Code2 } from 
 import { portfolioData } from '../../data/portfolioData';
 
 const skills = {
-  'Front-End': ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Bootstrap', 'TailwindCSS'],
-  'Back-End': ['PHP', 'Laravel', 'Node.js', 'Express', 'MySQL'],
-  'DevOps': ['Docker', 'CI/CD', 'GitHub Actions', 'Bitbucket'],
-  'Tools': ['Git', 'GitHub', 'GitLab', 'Jira'],
+  'Front-End': ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue.js', 'Bootstrap', 'TailwindCSS'],
+  'Back-End': ['PHP', 'Laravel', 'Node.js', 'Express', 'MySQL', 'PostgreSQL'],
+  'DevOps': ['Docker', 'CI/CD', 'GitHub Actions', 'Bitbucket', 'AWS S3', 'Linux'],
+  'Tools': ['Git', 'GitHub', 'GitLab', 'Jira', 'PHPUnit', 'TDD'],
   'AI / MCP': ['Groq', 'Claude / Anthropic', 'MCP Servers', 'Tool Use'],
 };
 
@@ -19,12 +19,16 @@ const experiences = [
     period: 'Jan 2022 — Present',
     current: true,
     bullets: [
-      'Architect and ship production systems end to end across a distributed network of 6+ independent Laravel applications.',
-      'Architect and ship a Laravel MCP server exposing internal XPRR link data to AI agents, enabling automated AFID verification across publisher confirmation pages.',
-      'Bootstrap an internal Claude plugin registry as the company\'s foundation for AI-assisted developer workflows.',
-      'Integrate third-party APIs: Experian (credit reporting), Active Campaign (email marketing), and payment processors.',
-      'Migrate flagship app from legacy PHP/jQuery to modern Angular and Laravel.',
-      'Optimize PHPUnit test suite from 17 minutes to 3.5 minutes, a 74% reduction in CI time.',
+      'Built and maintain multiple Laravel applications including the main platform, CRM system, checkout system, and various confirmation page sites.',
+      'Develop and maintain distributed systems architecture across 6+ independent Laravel applications and microservices, each with separate repositories, deployments, and REST API integrations.',
+      'Architected and shipped a Laravel MCP server exposing internal XPRR link data to AI agents, enabling automated AFID verification across publisher confirmation pages and catching typo\'d or stale links at build time.',
+      'Bootstrapped an internal Claude plugin registry as the company\'s foundation for AI-assisted developer workflows.',
+      'Integrated third-party APIs: Experian (credit reporting), Active Campaign (email marketing), and payment processors.',
+      'Migrated flagship app from legacy PHP/jQuery to modern Angular and Laravel.',
+      'Created RESTful APIs in Laravel that feed data to the Angular frontend for analytics and reporting.',
+      'Optimized PHPUnit test suite from 17 minutes to 3.5 minutes (74% reduction) by migrating 570 tests from DatabaseMigrations to RefreshDatabase and refactoring 80+ files for idempotent test operations, with zero test failures.',
+      'Work with MySQL databases daily, including designing schemas, writing migrations, and optimizing queries.',
+      'Build responsive landing pages and HTML email templates as needed.',
       'Manage automated deployments via Bitbucket CI/CD with code review gating before production.',
     ],
   },
