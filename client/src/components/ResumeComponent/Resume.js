@@ -171,7 +171,7 @@ const Resume = () => (
               {portfolioData.education.map((edu, i) => (
                 <div key={i}>
                   <p className="text-sm font-medium text-slate-200 mb-1">{edu.school}</p>
-                  <p className="text-xs text-slate-600 mb-3">{edu.location} · {edu.graduation}</p>
+                  <p className="text-xs text-slate-600 mb-3">{edu.location}{edu.graduation && ` · ${edu.graduation}`}</p>
                   <ul className="space-y-1.5 text-xs text-slate-400">
                     {edu.degrees.map((degree, j) => (
                       <li key={j}>{degree}</li>

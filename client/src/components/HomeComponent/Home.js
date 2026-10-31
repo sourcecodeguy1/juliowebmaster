@@ -150,7 +150,7 @@ const Home = () => (
           transition={{ delay: 0.5, duration: 0.4 }}
         >
           <a
-            href="https://www.linkedin.com/in/julio-sandoval-webmaster/"
+            href="https://www.linkedin.com/in/julio-sandoval-ba587613a/"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"

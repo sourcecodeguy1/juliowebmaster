@@ -3,10 +3,9 @@ export const portfolioData = {
     {
       school: 'Western Governors University',
       location: 'Salt Lake City, UT',
-      graduation: 'Feb 2027 – Sept 2027 (Expected)',
       degrees: [
-        'Software Engineering – B.S.',
-        'AI Engineering, Software Engineering – M.S.',
+        'B.S. Software Engineering — Expected February 2027',
+        'M.S. AI Engineering, Software Engineering — Expected September 2027',
       ],
     },
     {
