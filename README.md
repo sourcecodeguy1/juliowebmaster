@@ -24,7 +24,7 @@ Live at **[juliowebmaster.com](https://juliowebmaster.com)**
 - Docker (multi-stage builds)
 - Nginx (static file serving)
 - Traefik (reverse proxy + SSL)
-- GitHub Actions (CI/CD — build, push to Docker Hub, deploy to Vultr)
+- GitHub Actions (CI/CD — build, push to Docker Hub, deploy to Contabo)
 
 ---
 
@@ -76,14 +76,18 @@ npm run dev     # http://localhost:3002
 
 Pushing to `master` triggers GitHub Actions:
 1. Builds and pushes Docker images to Docker Hub
-2. SSHs into the Vultr server and force-recreates both containers
+2. SSHs into the Contabo server and force-recreates both containers
 
 ---
 
 ## Features
 
 - **AI Chat Widget** — floating assistant powered by Groq (Llama 3.3 70B) with MCP-style tool use to answer questions about skills, experience, and projects
-- **Contact Form** — sends email via Nodemailer/Mailtrap
+- **Contact Form** — Nodemailer with Resend in production and Mailtrap sandbox in development; see [setup and verification](docs/CONTACT_EMAIL_SETUP.md)
 - **Dark Theme** — Tailwind CSS with indigo/cyan accent palette
 - **Animated Hero** — Framer Motion entrance animations
 - **Resume Timeline** — full work history without pagination
+
+## Contact email configuration
+
+See [CONTACT_EMAIL_SETUP.md](docs/CONTACT_EMAIL_SETUP.md) for Contabo deployment, secure SMTP configuration, DNS verification, spam controls, and the required live Gmail receipt test. Production delivery is not yet verified.

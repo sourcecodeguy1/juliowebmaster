@@ -61,3 +61,8 @@ utility-server.sh
 
 # resume
 Julio_Sandoval_Resume.pdf
+# Local server build output
+/server/dist/
+
+# Local browser automation artifacts
+/.playwright-mcp/

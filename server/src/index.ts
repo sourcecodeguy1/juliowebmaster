@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import Groq from 'groq-sdk';
-import nodemailer from 'nodemailer';
+import { contactHandler, contactLimiter, sendContactMail } from './contact';
 import { tools, executeTool, ToolName } from './tools';
 
 dotenv.config();
@@ -13,7 +13,15 @@ const port = process.env.PORT || 3002;
 app.use(cors({
   origin: process.env.ALLOWED_ORIGIN || 'https://juliowebmaster.com',
 }));
+// Set only explicit trusted proxy IPs/CIDRs after verifying the production proxy chain.
+if (process.env.TRUSTED_PROXIES) app.set('trust proxy', process.env.TRUSTED_PROXIES.split(',').map(value => value.trim()));
+app.use('/api/send-email', contactLimiter(), express.json({ limit: '32kb' }));
 app.use(express.json());
+app.use((error: any, _req: express.Request, res: express.Response, next: express.NextFunction) => {
+  if (error?.type === 'entity.too.large') { res.status(413).json({ error: 'Please keep your project description under 5,000 characters.' }); return; }
+  if (error?.type === 'entity.parse.failed') { res.status(400).json({ error: 'Invalid form data. Please try again.' }); return; }
+  next(error);
+});
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
@@ -87,37 +95,7 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-app.post('/api/send-email', async (req, res) => {
-  const { firstName, email, message } = req.body;
-
-  if (!firstName?.trim() || !email?.trim() || !message?.trim()) {
-    return res.status(400).json({ error: 'All fields are required' });
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: Number(process.env.MAIL_PORT) || 2525,
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS,
-    },
-  });
-
-  try {
-    await transporter.sendMail({
-      from: `"${firstName}" <${email}>`,
-      to: process.env.MAIL_TO,
-      subject: `Portfolio contact from ${firstName}`,
-      text: message,
-      html: `<p><strong>From:</strong> ${firstName} (${email})</p><p>${message}</p>`,
-    });
-
-    res.json({ success: 'OK' });
-  } catch (error) {
-    console.error('Mail error:', error);
-    res.status(500).json({ error: 'Failed to send email' });
-  }
-});
+app.post('/api/send-email', contactHandler(sendContactMail));
 
 app.listen(port, () => {
   console.log(`Portfolio server running on port ${port}`);

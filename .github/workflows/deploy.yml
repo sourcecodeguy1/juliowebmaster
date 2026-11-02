@@ -46,7 +46,7 @@ jobs:
     needs: push-images-to-docker-hub
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Vultr Server
+      - name: Deploy to Contabo Server
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
