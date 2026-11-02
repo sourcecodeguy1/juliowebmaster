@@ -90,4 +90,4 @@ Pushing to `master` triggers GitHub Actions:
 
 ## Contact email configuration
 
-See [CONTACT_EMAIL_SETUP.md](docs/CONTACT_EMAIL_SETUP.md) for Contabo deployment, secure SMTP configuration, DNS verification, spam controls, and the required live Gmail receipt test. Production delivery is not yet verified.
+See [CONTACT_EMAIL_SETUP.md](docs/CONTACT_EMAIL_SETUP.md) for Contabo deployment, secure SMTP configuration, DNS verification, spam controls, and the required live Gmail receipt test. Production delivery to juliowebmaster1@gmail.com is verified: the provider reported delivery and Julio confirmed receipt of the labeled live test.
